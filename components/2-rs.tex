@@ -1,1 +1,162 @@
-\section{Recommendation systems}
+\section{Recommendation systems} \label{section:rs}
+	Recommendation systems leverage data and algorithms to offer personalized suggestions to users, enhancing their decision-making in various domains. These systems use collaborative filtering, content-based filtering, and hybrid approaches, facilitating tailored content, product, or service recommendations, ultimately improving user engagement and satisfaction in diverse applications, from e-commerce to content streaming.
+
+	Clothing and fashion recommendation systems present a unique and intricate challenge compared to general recommendation systems. They must consider not only user preferences but also the highly subjective and context-dependent nature of fashion. Recommending apparel necessitates understanding intricate details like style, fit, and individual tastes, which can evolve over time. The ever-changing fashion trends further complicate the task. Fashion items often involve combinations, making recommendations more complex.
+
+	Moreover, the emotional aspect of fashion and the need for users to express their individuality make it challenging to predict preferences accurately. These systems must encompass visual recognition, trend analysis, and personalization, making fashion recommendation systems not only distinct but also more demanding to develop with precision.
+
+	\subsection{Goals of recommendation systems}
+		Studying the literature for clothing and fashion recommendation systems reveals the following goals:
+
+		\begin{enumerate}
+			\item Outfit recommendation: This is similar to the goal of generic recommendation systems as it aims to recommend garments or outfits based on the user's preferences (e.g., complex color patterns, or specific fabrics and textures), body attributes like color and shape, current trends, and custom contexts specified by the user (e.g., outfit for a formal party) \cite{DBLP:conf/sigir/LiW0CXC20, 9156794, 8932738, DBLP:conf/mm/HidayatiHCHFC18, DBLP:journals/tmm/ZhangJGZZLT17, DBLP:conf/waim/ShaWZFZY16}.
+			\item Outfit generation: This goal is, given a clothing item (e.g., a shirt), find the best garment (e.g., a tie) or outfit (e.g., from pants, skirts, ties, shoes, or hats) that is compatible with the given item. A special case of this goal is pair generation, where one item is the query and a suitable pairing item is needed. This is usually done for top and bottom items \cite{9156535, 9893574, DBLP:conf/kdd/ChenHXGGSLPZZ19}.
+			\item Outfit completion: This is when most of the outfit is in place, and the task is to complete the outfit's missing items (e.g., what shoes to wear with this outfit?). Also known as fill-in-the-blank (FITB) test \cite{9857004, DBLP:journals/corr/abs-2005-06584, DBLP:conf/mm/SongHLCXN19}.
+			\item Outfit compatibility evaluation: Also an implicit goal for other tasks, this aims to score an outfit based on how compatible its constituent elements are. This can be used as a metric to rank outfits (e.g., does the red shirt go well with the black skirt and black socks or is the white shirt better?) \cite{DBLP:journals/eswa/MoZPW23, 10049142, DBLP:journals/eswa/BalimO23,9775146, DBLP:conf/iccvw/KimSMSSP21, DBLP:journals/ijon/SunHWZP20, DBLP:conf/sigir/DongWSDN20, DBLP:conf/www/YinL0019, DBLP:conf/aaai/YangMLWC19}.
+			\item Explainable recommendation: An explanation describes why something was recommended to the user. Explanations are more transparent than black-box recommendations and improve the user experience in a variety of ways. They enhance user trust and understanding, lead to error detection and correction, mitigate bias and promote fairness, and increase user engagement. In recent years, more work has been done on explainable fashion recommendation \cite{DBLP:journals/tomccap/YangSFWDN21, DBLP:journals/www/LiCH21, 9522737, DBLP:journals/tkde/LinRCRMR20, DBLP:conf/wacv/TangsengO20, DBLP:conf/ijcai/HouWCLZL19, DBLP:conf/sigir/ChenCXZ0QZ19}.
+		\end{enumerate}
+	
+	\subsection{Recent works}
+		Approaches from recent literature on clothing and fashion recommendation systems listed in Table \ref{table:fashion-rs} claim to outperform state-of-the-art methods \cite{DBLP:conf/sigir/LiuWW17, DBLP:conf/icdm/KangFWM17, DBLP:conf/sigir/ChenZ0NLC17, DBLP:conf/aaai/HeM16}. The table lists insights gained from the survey and and notes limitations of each technique.
+
+	\begin{table}[H]
+		\caption{Clothing \& Fashion Recommendation Systems}
+		\label{table:fashion-rs}
+		\begin{tabularx}{\columnwidth}{BsXX}
+			\toprule
+				\textbf{Authors} &
+				\textbf{Year} &
+				\textbf{Insights} &
+				\textbf{Limitations} \\
+			\midrule
+				\refentry{DBLP:journals/eswa/MoZPW23}{
+					Poses personalized outfit compatibility as a multi-label classification problem and uses two transformers to discover correlation between visual image features, fashion and physical attributes.
+				}{
+					Imbalance of fashion item attribute distribution and outfit physical label distribution makes the multi-label classification task challenging.
+				}
+
+				\refentry{10049142}{
+					Combines a categorical dynamic graph convolutional network with multi-layered visual outputs and surrounding contextual information to obtain better fashion characteristics.
+				}{
+					Does not account for user preferences or personalized styles.
+				}
+
+				\refentry{DBLP:journals/eswa/BalimO23}{
+					Presents a new dataset with clothing images and user comments on compatibility, and uses this to train a compatibility suggestion text generator.
+				}{
+					Does not evaluate compatibility score and only provides simplistic textual feedback of whether outfit is compatible or not.
+				}
+
+				\refentry{9857004}{
+					Proposes a framework that learns compatibility of entire outfits modeled as unordered sets using self-attention.
+				}{
+					Does not consider multi-dimensional image features and only relies on gross features and categorical text descriptions.
+				}
+
+				\refentry{9893574}{
+					Proposes outfit generation framework using a semantic alignment module and a collocation classification module.
+				}{
+					Computational complexity for outfit of size N items is $O(N)$ as the framework needs $(N - 1)$ item generators to synthesize complementary fashion items.
+				}
+
+				
+			\bottomrule
+		\end{tabularx}
+	\end{table}
+
+	\begin{table}[H]
+		\begin{tabularx}{\columnwidth}{BsXX}
+			\toprule
+				\textbf{Authors} &
+				\textbf{Year} &
+				\textbf{Insights} &
+				\textbf{Limitations} \\
+			\midrule
+			
+				\refentry{9775146}{
+					Treats outfits as sequence of items and uses a Bi-LSTM to capture latent interaction between items.
+				}{
+					Uses naïve method to derive local contents by making vertical strips of try-on outfit instead of a robust segmentation or other spatial model.
+				}
+			
+				\refentry{DBLP:conf/iccvw/KimSMSSP21}{
+					Presents a self-supervised learning framework that can learn color and texture-aware features without labeling, thus being better suited for transfer learning.
+				}{
+					Assumes similar colors and textures are compatible and does not explore complementary nature of differently colored or textured items.
+				}
+				
+				\refentry{DBLP:conf/sigir/DongWSDN20}{
+					Proposes multi-modal try-on-guided compatibility modeling scheme to learn compatibility via the try-on appearance of outfit rather than individual items.
+				}{
+					Does not account for personalized attributes like body shape or color.
+				}
+				\refentry{9156535}{
+					Proposes a scalable approach via category-based subspace attention networks, and introduces outfit ranking loss function to better model item relationships in an entire outfit.
+				}{
+					Does not use text features to learn joint visual and text embedding which could improve results further.
+				}
+
+				\refentry{DBLP:journals/corr/abs-2005-06584}{
+					Propose the use of a relational network to develop new compatibility learning models to move past limitations associated with considering entire outfits.
+				}{
+					Does not consider personalilzed attributes and only measures compatibilitiy of outfit items.
+				}
+				
+				\refentry{DBLP:conf/sigir/LiW0CXC20}{
+					Jointly trains fashion compatibility and personalized outfit recommendations for optimal results using graph networks.
+				}{
+					Can improve further by using multi-modal inputs and incorporating them into the graph network.
+				}
+				
+				\refentry{9156794}{
+					Proposes an embedding to identify garments that are compatible with user's body shape and demonstrates how to learn the embedding from catalog images of models of various shapes and sizes wearing fashion items.
+				}{
+					Only focuses on shape and size, and not on other factors like color, texture, or style.
+				}
+				
+				\refentry{DBLP:journals/ijon/SunHWZP20}{
+					Proposes a multimodal framework which uses both semantic and visual embeddings for a unified deep learning model.
+				}{
+					Triplet loss training using a negative for each reference can create bias against pairings which might otherwise work for certain situations.
+				}
+			
+				\refentry{DBLP:conf/www/YinL0019}{
+					Proposes knowledge learning method that uses both visual compatibility relationships and style information.
+				}{
+					Uses AUC as a metric, which has the risk of only recommending popular items which have a lot of similarities and overlap.
+				}
+				
+			\bottomrule
+		\end{tabularx}
+	\end{table}
+	
+	\begin{table}[H]
+		\begin{tabularx}{\columnwidth}{BsXX}
+			\toprule
+				\textbf{Authors} &
+				\textbf{Year} &
+				\textbf{Insights} &
+				\textbf{Limitations} \\
+			\midrule
+				
+				\refentry{DBLP:conf/mm/SongHLCXN19}{
+					Proposes a model for both general compatibility and personalized preference modeling which characterizes item-item and user-item interactions.
+				}{
+					Uses a simple linear fusion strategy for combining general compatibility and personalized preference instead of an advanced strategies like attentive fusion.
+				}
+				
+				\refentry{DBLP:conf/kdd/ChenHXGGSLPZZ19}{
+					Uses a transformer to propose a Personalized Outfit Generaion model and deploys it on an industrial-scale application.
+				}{
+					Since it operates on a commercial platform, it is more susceptible to the cold-start problem as newer items and users get added.
+				}
+				
+				\refentry{DBLP:conf/aaai/YangMLWC19}{
+					Proposes a framework which places items in a unified embedding space where category complementary relations are encoded as vector translations.
+				}{
+					Needs more exploration of fine-grained relations beyond just category-level co-occurrence to include rules based on color, texture, style, etc.
+				}
+
+			\bottomrule
+		\end{tabularx}
+	\end{table}

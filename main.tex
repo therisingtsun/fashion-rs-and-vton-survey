@@ -1,12 +1,22 @@
 \documentclass[conference]{IEEEtran}
 \IEEEoverridecommandlockouts
 
-\usepackage{cite}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{tabularx,booktabs}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
+\usepackage{float}
+
+\newcolumntype{B}{>{\hsize=.5\hsize}X}
+\newcolumntype{s}{>{\hsize=.15\hsize}X}
+\newcommand{\heading}[1]{\multicolumn{1}{c}{#1}}
+
+\newcommand{\refentry}[3]{
+	\citeauthor{#1} \cite{#1} & \citeyear{#1} & #2 & #3 \\ \addlinespace
+}
 
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
@@ -25,8 +35,7 @@
 	\input{components/3-vton.tex}
 	\input{components/4-datasets.tex}
 	\input{components/5-conclusion.tex}
- 
-	\bibliographystyle{IEEEtran}
-	\bibliography{components/refs.bib}
+
+	\input{components/refs.tex}
 
 \end{document}
