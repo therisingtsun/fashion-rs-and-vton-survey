@@ -8,14 +8,16 @@
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
+\usepackage{ifthen}
 \usepackage{float}
 
-\newcolumntype{B}{>{\hsize=.5\hsize}X}
-\newcolumntype{s}{>{\hsize=.15\hsize}X}
-\newcommand{\heading}[1]{\multicolumn{1}{c}{#1}}
-
-\newcommand{\refentry}[3]{
-	\citeauthor{#1} \cite{#1} & \citeyear{#1} & #2 & #3 \\ \addlinespace
+\newcommand{\lithead}[3][]{
+	\textbf{
+		\ifthenelse{\equal{#1}{}}{\citeauthor{#2}}{#1}
+		(\citeyear{#2})
+		\cite{#2}.
+	}
+	#3
 }
 
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
