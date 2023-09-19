@@ -1,2 +1,96 @@
 \section{Datasets} \label{section:datasets}
 
+	Fashion AI research relies on diverse datasets containing images, product descriptions, and user interactions. They provide researchers with rich resources for training and evaluating algorithms to improve clothing recommendation, style analysis, and virtual try-on systems.
+
+	Requirements of a good dataset are as follows:
+
+	\begin{enumerate}
+		\item \textbf{Large and Diverse:} It should include a substantial number of high-quality images, covering a wide range of clothing items, styles, and categories to ensure model robustness and versatility.
+		\item \textbf{High-Quality Images:} The dataset should comprise high-resolution images with clear representations of clothing items to facilitate accurate analysis and modeling.
+		\item \textbf{Annotations:} Precise and comprehensive annotations for each image, including information on clothing attributes (e.g., color, style, pattern), product details (e.g., brand, price), and user interactions (e.g., ratings, reviews).
+		\item \textbf{Variety of Attributes:} Incorporate detailed attributes such as garment type (e.g., dresses, shoes), gender specificity, and size information to enable diverse research applications.
+		\item \textbf{User-Generated Data:} Incorporate data from real-world user interactions, including user-generated content like reviews, ratings, and comments, to capture user preferences and feedback.
+		\item \textbf{Temporal Dynamics:} Include data that capture trends, seasonality, and changing fashion styles over time, enabling research on dynamic fashion recommendation and trend analysis.
+		\item \textbf{Compatibility with AI Models:} The dataset should be well-preprocessed and formatted for compatibility with common AI and machine learning frameworks, making it readily usable for research purposes.
+		\item \textbf{Balanced Distribution:} Ensure a balanced distribution of clothing categories and attributes to prevent model biases and support fair evaluations.
+		\item \textbf{Privacy and Ethical Considerations:} Address privacy concerns and adhere to ethical standards, including obtaining proper consent for user-generated data and anonymizing sensitive information.
+		\item \textbf{Accessibility:} Make the dataset publicly accessible to encourage collaboration and transparency in the research community.
+		\item \textbf{Benchmarking:} Provide clear evaluation metrics and benchmarks, allowing researchers to assess and compare the performance of different AI models accurately.
+		\item \textbf{Updates and Maintenance:} Regularly update and maintain the dataset to reflect changing fashion trends and ensure its relevance for ongoing research.
+	\end{enumerate}
+
+	Tables \ref{table:datasets} and \ref{table:datasets-3D} list the popular public datasets available for research.
+
+	\newcolumntype{M}{>{\hsize=.4\hsize}X}
+
+	\newcommand{\datarow}[4]{
+		#2 \cite{#1} & \citeyear{#1} & \numprint{#3} & #4 \\ \addlinespace
+	}
+
+	\begin{table}[H]
+		\caption{Available fashion datasets (2D)}
+		\label{table:datasets}
+		\begin{tabularx}{\columnwidth}{XsMX}
+			\toprule
+				\textbf{Authors} &
+				\textbf{Year} &
+				\textbf{Size} &
+				\textbf{Labels} \\
+			\midrule
+				\datarow
+					{DBLP:conf/cvpr/PatelLP20}
+					{TailorNet}
+					{170156}
+					{Gender, pose, style}
+				\datarow
+					{DBLP:conf/cvpr/GeZWTL19}
+					{DeepFashion2}
+					{801000}
+					{Scale, occlusion, zoom, viewpoint, category, style, bounding-box, dense landmarks, per-pixel mask}
+				\datarow
+					{DBLP:conf/mm/ZhengYKP18}
+					{ModaNet}
+					{55176}
+					{Pixel annotation, bounding box, polygon}
+				\datarow
+					{DBLP:journals/corr/abs-1708-07747}
+					{Fashion-MNIST}
+					{70000}
+					{Category}
+				\datarow
+					{DBLP:conf/iccv/YamaguchiKB13}
+					{Paper Doll}
+					{339797}
+					{Category, pose}
+			\bottomrule
+		\end{tabularx}
+	\end{table}
+
+	\begin{table}[H]
+		\caption{Available fashion datasets (3D)}
+		\label{table:datasets-3D}
+		\begin{tabularx}{\columnwidth}{XsMX}
+			\toprule
+				\textbf{Authors} &
+				\textbf{Year} &
+				\textbf{Size} &
+				\textbf{Labels} \\
+			\midrule
+				\datarow
+					{DBLP:conf/eccv/TiwariBTP20}
+					{SIZER}
+					{2482}
+					{Gender, size, style}
+				\datarow
+					{DBLP:conf/eccv/ZhuCJCDWCH20}
+					{Deep Fashion3D}
+					{2078}
+					{Pose, feature lines, multi-view images}
+				\datarow
+					{DBLP:conf/iccv/BhatnagarTTP19}
+					{MGN}
+					{712}
+					{Pose, shape}
+			\bottomrule
+		\end{tabularx}
+	\end{table}
