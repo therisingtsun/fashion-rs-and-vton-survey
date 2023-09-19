@@ -6,101 +6,250 @@
 	\subsection{Image-based (2D) virtual try-on}
 		Image-based try-on systems take in images as input data and generate images as output data. The systems infer data like pose, warp, and occlusion of the target and then use that information to guide the generation of the post-try-on image.
 
-		\lithead[MGD]{DBLP:journals/corr/abs-2304-02051}{
-			Incorporates multimodal inputs such as text, body pose, and sketches and outperforms other competitors (5.57 FID) in terms of realism and coherence with multimodal inputs. Also introduces new semi-automatically annotated datasets.
+		\lithead{DBLP:conf/iccvw/AyushJCHK19}{
+			Multi-scale patch adversarial loss improves cloth fit and texture preservation in virtual try-on. GMM enhances control over shape and pose transformations. Adversarial loss promotes realistic texture and body shape propagation. Reformulation as a conditional image generation problem offers an economical virtual try-on solution without 3D information. FID 15.7261 and SSIM 0.731. However, needs to refine multi-scale patch adversarial loss for better cloth transformation and texture preservation, explore broader applications of the GMM with the proposed loss function, and evaluate the loss function on diverse datasets for real-world applicability.
 		}
 
-		\lithead[GP-VTON]{DBLP:conf/cvpr/XieHDZDZ0L23}{
-			Preserves semantic information, avoids texture distortion, and handles challenging inputs by employing local flows to warp garment parts individually and dynamically truncating the gradient in the overlap area, effectively avoiding texture squeezing problems. Easily extendeds to a multi-category scenarios. FID 11.98 and SSIM 0.94. However, computational requirements of the proposed techniques, Local-Flow Global-Parsing and Dynamic Gradient Truncation, are not discussed, and has a lack of evaluation on a wider range of datasets.
+		\lithead{DBLP:conf/iccvw/AyushJCK19}{
+			Demonstrates how multi-task learning improves efficiency and task performance. Auxiliary tasks, like semantic segmentation, enhance virtual try-on. Pseudo ground truth masks aid in image fusion, leading to a better fit. FID 18.93 and SSIM 0.712.
 		}
 
-		\lithead[SAL-VTON]{DBLP:conf/cvpr/YanGZX23}{
-			Introduces semantically associated landmarks for virtual try-on which helps in addressing misalignment issues and improving the try-on results (FID 9.52 and SSIM 0.907). Also provides the ability to edit virtual try-on results using landmarks.
+		\lithead[VTNFP]{DBLP:conf/iccv/YuWX19}{
+			Excels in retaining clothing and body details by leveraging GAN \cite{DBLP:journals/corr/GoodfellowPMXWOCB14} and cGAN's \cite{DBLP:journals/corr/MirzaO14} powerful generative capabilities. However, computational resource requirements not mentioned which could potentially limit practical use. Also, handling of intricate clothing patterns is not explicitly addressed.
 		}
 
-		\lithead[TryOnDiffusion]{DBLP:conf/cvpr/ZhuYZRCS0K23}{
-			Generates apparel try-on results with significant body shape and pose modification (FID 13.447). But focuses on upper body clothing and does not experiment with full body try-on. Further, performance with more complex backgrounds is unknown.
+		\lithead[ClothFlow]{DBLP:conf/iccv/HanHHS19}{
+			Utilizes dense flow estimation for natural-looking clothing deformation and appearance transfer. Cascaded flow network ensures accurate appearance matching, enhancing clothed person generation. Incorporation of TV-L1 regularization reduces artifacts from 2D texture warping. Conditional layout generator disentangles shape and appearance for spatially coherent results. The three-stage framework offers a comprehensive approach for clothed person generation with strong results. SSIM 0.771. However, warping 2D image textures to predefined coordinate systems with DensePose can introduce artifacts. Performance of DensePose estimator may impact photorealism, potentially less realistic compared to deformation-based methods. Additionally, accurate estimation of appearance flow in ClothFlow may be challenging with complex clothing patterns or occlusions.
 		}
 
-		\lithead[3D-GCL]{DBLP:conf/nips/HuangLXKCL22}{
-			Incorporates 3D parametric human models as priors to better handle variations of pose and viewpoint. Utilizes 3D-aware global correspondences that encode global semantic correlations. FID 10.58.
+		\lithead[UVTON]{DBLP:conf/iccvw/KuboISM19}{
+			Leverages UV mapping for accurate virtual try-on across diverse postures. DensePose integration enhances mapping precision by estimating 3D surface information for each pixel. Painting and refine modules refine mapping and enhance clothing details, improving realism. However, DensePose accuracy is crucial for success which is challenging in limited 2D scenarios. The effectiveness of UV mapping in complex clothing patterns needs further study. Lack of comprehensive computational analysis impacts real-time viability. Painting and refine module limitations unaddressed, especially with occlusions.
 		}
 
-		\lithead[C-VTON]{DBLP:conf/wacv/FeleLPS22}{
-			Generates convincing results even with subjects in difficult poses. Allows for the synthesis of high-quality try-on results. FID 19.54. But has issues with the masking procedure when generating image context and loose clothing. Further, lacks the ability to differentiate between the front and backside of the target garment.
+		\lithead[LA-VITON]{DBLP:conf/iccvw/LeeLKCP19}{
+			Excels in damage-free, visually appealing virtual try-on results by using a GMM and TOM to ensure seamless synthesis. Grid interval consistency loss maintains shape and pattern consistency, improving matching. Occlusion-handling technique enhances geometric matching for superior results. However, needs to refine occlusion-handling technique to address complex scenarios for more accurate results.
 		}
 
-		\lithead[DressCode]{DBLP:conf/cvpr/MorelliFCLCC22}{
-			Makes predictions at the pixel-level, resulting in high visual quality and rich in detail try-on images. FID 11.4. But is limitated in terms of representing all possible clothing categories and styles. Also, does not explicitly address issues such as occlusion, lighting variations, or realistic fabric rendering.
+		\lithead{DBLP:conf/iccvw/YildirimJVB19}{
+			Uses StyleGAN to enable high-resolution fashion model image generation, enhancing clothing shopping visualizations. Conditional StyleGAN with embedding network allows customization of outfits and poses for fashion models. Swapping style vectors in unconditional StyleGAN enhances flexibility in image generation. Deep pose estimator and keypoints extraction improve accuracy in representing body poses. FID 9.63 and FID 5.15 for conditional and unconditional StyleGAN respectively.
 		}
 
-		\lithead[HR-VTON]{DBLP:conf/eccv/LeeGPCC22}{
-			Ensures information exchange and eliminates misalignment and pixel-squeezing artifacts by filtering out incorrect segmentation map predictions. FID 10.91.
+		\lithead[CP-VTON+]{minar2020cp}{
+			Corrects clothing-agnostic human representation by addressing labeling and omission issues. Enhances composition mask using input clothing mask and a concrete loss function. Geometric Matching Module (GMM) network takes multiple informative inputs, enhancing overall performance. SSIM 0.8163. But warped clothes can show distortions due to representation issues and input mismatches, affecting virtual try-on effectiveness.
 		}
 
-		\lithead[SDAFAN]{DBLP:conf/eccv/BaiZLZY22}{
-			Enables clothing warping and body synthesizing simultaneously by extracting and merging feature and pixel-level information from different semantic areas. Addresses challenges without relying on intermediate parser-based labels, reducing noise and inaccuracies in the try-on process. FID 10.97. But handling of complex clothing patterns or textures is a limitation.
+		\lithead[WUTON]{DBLP:conf/eccv/IssenhuthMC20}{
+			Student-teacher paradigm improves virtual try-on performance by exploiting masked information. Adversarial loss ensures the student model mimics real image distribution, enhancing realism. Real-time virtual try-on achieved by omitting human parser and pose estimator at inference. FID 7.927 and SSIM 3.154. Howver, student-teacher paradigm requires initial teacher training, potentially limiting direct learning.
 		}
 
-		\lithead[RT-VTON]{DBLP:conf/cvpr/YangY022}{
-			Can accurately synthesize photo-realistic results for both standard and non-standard clothes. Is able to handle hard samples such as off-shoulder clothes. Semi-rigid deformation technique used in the method balances the trade-off between rigidity and flexibility of clothes warping. FID 11.66.
-		}
-
-		\lithead{DBLP:conf/cvpr/HeSX22}{
-			Proposes a perceptual loss and a warping model to train the try-on model, which helps improve the quality of the generated appearance flow and the final try-on results. Usage of a pre-trained VGG network and a parser-based model in the training process enhances the accuracy and effectiveness (FID 8.89).
-		}
-
-		\lithead{DBLP:conf/cvpr/FengMSGLLOZZ22}{
-			Proposes a cheap and scalable weakly-supervised method and shows that projecting the rough alignment of clothing and body onto the StyleGAN space can yield photo-realistic wearing results. The Deep Generative Projection algorithm has a time cost for semantic and pattern searches and the method still faces difficulty against state-of-the-art methods in handling extremely complicated poses. Has an undesirably high FID score of 48.4.
-		}
-
-		\lithead[wFlow]{DBLP:conf/cvpr/DongZXZDZLLY22}{
-			Is capable of transferring arbitrary garments onto challengingly-posed query person images in real-world backgrounds. Efficiently integrates the advantages of 2D pixel-flow and 3D vertex-flow. The self-supervised training scheme used in the paper leverages easily obtainable dance videos to train the model. FID 8.89. However, since it focuses on garment transfer in the context of dance videos, it is unclear how well it performs on a large scale or with diverse datasets.
-		}
-
-		\lithead[DBCT]{DBLP:conf/cvpr/FenocchiMCBCC22}{
-			Improves the generation of virtual try-on results by dealing with long-range dependencies and achieving more realistic and accurate results and demonstrates its effectiveness in comparison to both standard pure convolutional approaches and previous Transformer-based proposals. FID 13.46.
-		}
-
-		\lithead[DiOr]{DBLP:conf/iccv/CuiML21}{
-			Supports various fashion-related tasks such as 2D pose transfer, virtual try-on, and outfit editing. Explicitly encodes the shape and texture of each garment, allowing for separate editing of these elements. Joint training on pose transfer and inpainting helps with detail preservation and coherence of generated garments. FID 13.1. However, complex or rarely seen poses may not always be rendered correctly, and ghosting artifacts and improper filling of holes in garments can also be present.
-		}
-
-		\lithead[ZFlow]{DBLP:conf/iccv/ChopraJHK21}{
-			Proposes an end-to-end framework for image-based virtual try-on addressing concerns regarding geometric and textural integrity. Incorporates gated aggregation of hierarchical flow estimates, termed Gated Appearance Flow, and dense structural priors to improve depth perception, handling of occlusion, and reduction of artifacts in try-on outputs. FID 15.17.
-		}
-
-		\lithead[FashionMirror]{DBLP:conf/iccv/ChenLHSC21}{
-			Proposes a co-attention feature-remapping framework for virtual try-on to generate realistic results with spatio-temporal smoothness. Allows for refinement through convolution and generating different views. FID 5.226. However, does not address high-resolution virtual try-on, and does not provide a comprehensive analysis of the computational efficiency or scalability of the proposed framework.
-		}
-
-		\lithead[PF-AFN]{DBLP:conf/cvpr/GeSZG0021}{
-			Produces highly photo-realistic try-on images without relying on human parsing by the use of appearance flows between the person image and the garment image which enables accurate dense correspondences and high-quality results. Introduces an adjustable distillation loss function to ensure accurate representations and predictions. Evaluations show the large superiority of the proposed method in terms of image quality compared to existing approaches. FID 6.429. However, heavily relies on the use of a parser-based model as the "teacher" network, which may limit the image quality of the "student" network.
-		}
-
-		\lithead[VITON-HD]{DBLP:conf/cvpr/ChoiPLC21}{
-			Successfully synthesizes high-resolution virtual try-on images. Introduces a misalignment-aware normalization technique to address spatial deformation and generate properly aligned images. Utilizes conditional normalization layers to preserve semantic information and apply spatially varying affine transformations. FID 11.74.
-		}
-
-		\lithead[DCTON]{DBLP:conf/cvpr/GeSGY0021}{
-			Can produce highly-realistic try-on images by disentangling important components of virtual try-on. Utilizes perceptual loss to ensure similar CNN feature representations between the warped clothes. Disentangles clothing, skin, and background components from input images. FID 14.82. However, does not differentiate clothing and non-clothing regions, which can hinder the quality of results.
+		\lithead{minar20203d}{
+			Hybrid 2D-3D method enables accurate 3D clothing reconstruction for natural shapes. 3D deformations preserve clothing characteristics, especially for large transformations or detailed textures. Template-based approach aligns clothing image with 3D body model silhouette for precise reconstruction. SMPL \cite{SMPL:2015} model ensures accurate representation of diverse body shapes and poses. Updated Try-On Module (TOM) network enhances blending stage for improved virtual try-on results.
 		}
 
 		\lithead[OVNet]{DBLP:conf/cvpr/LiCZL21}{
 			Captures important details like buttons, shading, textures, and realistic hemlines, resulting in high-quality virtual try-on images. Introduces a technique for matching outfits with the most suitable model, leading to significant improvements in try-on results. Also consists of a semantic layout generator and an image generation pipeline using multiple coordinated warps, which yields consistent improvements in detail (FID 7.02). But does not handle variations in body shape, which limits its ability to dress garments directly on different body types. It also does not address the challenge of obtaining 3D measurements of garments and users.
 		}
 
+		\lithead[CloTH-VTON+]{DBLP:journals/access/MinarTA21}{
+			Proposes a hybrid approach which combines 2D and 3D methods for realistic clothing deformations while preserving details. 2D methods generate disclosed human parts, ensuring visually appealing try-on outputs, while 3D cloth reconstruction allows flexibility in applying the method to different clothing styles. SSIM 0.813. 3D model construction is resource-intensive and time-consuming, while image-based methods struggle with significant clothing deformations. Computational requirements and efficiency are unspecified.
+		}
+
+		\lithead[DCTON]{DBLP:conf/cvpr/GeSGY0021}{
+			Can produce highly-realistic try-on images by disentangling important components of virtual try-on. Utilizes perceptual loss to ensure similar CNN feature representations between the warped clothes. Disentangles clothing, skin, and background components from input images. FID 14.82. However, does not differentiate clothing and non-clothing regions, which can hinder the quality of results.
+		}
+
+		\lithead[VITON-HD]{DBLP:conf/cvpr/ChoiPLC21}{
+			Successfully synthesizes high-resolution virtual try-on images. Introduces a misalignment-aware normalization technique to address spatial deformation and generate properly aligned images. Utilizes conditional normalization layers to preserve semantic information and apply spatially varying affine transformations. FID 11.74.
+		}
+
+		\lithead[PF-AFN]{DBLP:conf/cvpr/GeSZG0021}{
+			Produces highly photo-realistic try-on images without relying on human parsing by the use of appearance flows between the person image and the garment image which enables accurate dense correspondences and high-quality results. Introduces an adjustable distillation loss function to ensure accurate representations and predictions. Evaluations show the large superiority of the proposed method in terms of image quality compared to existing approaches. FID 6.429. However, heavily relies on the use of a parser-based model as the "teacher" network, which may limit the image quality of the "student" network.
+		}
+
+		\lithead[FashionMirror]{DBLP:conf/iccv/ChenLHSC21}{
+			Proposes a co-attention feature-remapping framework for virtual try-on to generate realistic results with spatio-temporal smoothness. Allows for refinement through convolution and generating different views. FID 5.226. However, does not address high-resolution virtual try-on, and does not provide a comprehensive analysis of the computational efficiency or scalability of the proposed framework.
+		}
+
+		\lithead[ZFlow]{DBLP:conf/iccv/ChopraJHK21}{
+			Proposes an end-to-end framework for image-based virtual try-on addressing concerns regarding geometric and textural integrity. Incorporates gated aggregation of hierarchical flow estimates, termed Gated Appearance Flow, and dense structural priors to improve depth perception, handling of occlusion, and reduction of artifacts in try-on outputs. FID 15.17.
+		}
+
+		\lithead[DiOr]{DBLP:conf/iccv/CuiML21}{
+			Supports various fashion-related tasks such as 2D pose transfer, virtual try-on, and outfit editing. Explicitly encodes the shape and texture of each garment, allowing for separate editing of these elements. Joint training on pose transfer and inpainting helps with detail preservation and coherence of generated garments. FID 13.1. However, complex or rarely seen poses may not always be rendered correctly, and ghosting artifacts and improper filling of holes in garments can also be present.
+		}
+
+		\lithead[DBCT]{DBLP:conf/cvpr/FenocchiMCBCC22}{
+			Improves the generation of virtual try-on results by dealing with long-range dependencies and achieving more realistic and accurate results and demonstrates its effectiveness in comparison to both standard pure convolutional approaches and previous Transformer-based proposals. FID 13.46.
+		}
+
+		\lithead[wFlow]{DBLP:conf/cvpr/DongZXZDZLLY22}{
+			Is capable of transferring arbitrary garments onto challengingly-posed query person images in real-world backgrounds. Efficiently integrates the advantages of 2D pixel-flow and 3D vertex-flow. The self-supervised training scheme used in the paper leverages easily obtainable dance videos to train the model. FID 8.89. However, since it focuses on garment transfer in the context of dance videos, it is unclear how well it performs on a large scale or with diverse datasets.
+		}
+
+		\lithead{DBLP:conf/cvpr/FengMSGLLOZZ22}{
+			Proposes a cheap and scalable weakly-supervised method and shows that projecting the rough alignment of clothing and body onto the StyleGAN \cite{DBLP:journals/pami/KarrasLA21} space can yield photo-realistic wearing results. The Deep Generative Projection algorithm has a time cost for semantic and pattern searches and the method still faces difficulty against state-of-the-art methods in handling extremely complicated poses. Has an undesirably high FID score of 48.4.
+		}
+
+		\lithead{DBLP:conf/cvpr/HeSX22}{
+			Proposes a perceptual loss and a warping model to train the try-on model, which helps improve the quality of the generated appearance flow and the final try-on results. Usage of a pre-trained VGG network and a parser-based model in the training process enhances the accuracy and effectiveness (FID 8.89).
+		}
+
+		\lithead[RT-VTON]{DBLP:conf/cvpr/YangY022}{
+			Can accurately synthesize photo-realistic results for both standard and non-standard clothes. Is able to handle hard samples such as off-shoulder clothes. Semi-rigid deformation technique used in the method balances the trade-off between rigidity and flexibility of clothes warping. FID 11.66.
+		}
+
+		\lithead[SDAFAN]{DBLP:conf/eccv/BaiZLZY22}{
+			Enables clothing warping and body synthesizing simultaneously by extracting and merging feature and pixel-level information from different semantic areas. Addresses challenges without relying on intermediate parser-based labels, reducing noise and inaccuracies in the try-on process. FID 10.97. But handling of complex clothing patterns or textures is a limitation.
+		}
+
+		\lithead[HR-VTON]{DBLP:conf/eccv/LeeGPCC22}{
+			Ensures information exchange and eliminates misalignment and pixel-squeezing artifacts by filtering out incorrect segmentation map predictions. FID 10.91.
+		}
+
+		\lithead[DressCode]{DBLP:conf/cvpr/MorelliFCLCC22}{
+			Makes predictions at the pixel-level, resulting in high visual quality and rich in detail try-on images. FID 11.4. But is limitated in terms of representing all possible clothing categories and styles. Also, does not explicitly address issues such as occlusion, lighting variations, or realistic fabric rendering.
+		}
+
+		\lithead[C-VTON]{DBLP:conf/wacv/FeleLPS22}{
+			Generates convincing results even with subjects in difficult poses. Allows for the synthesis of high-quality try-on results. FID 19.54. But has issues with the masking procedure when generating image context and loose clothing. Further, lacks the ability to differentiate between the front and backside of the target garment.
+		}
+
+		\lithead[3D-GCL]{DBLP:conf/nips/HuangLXKCL22}{
+			Incorporates 3D parametric human models as priors to better handle variations of pose and viewpoint. Utilizes 3D-aware global correspondences that encode global semantic correlations. FID 10.58.
+		}
+
+		\lithead[TryOnDiffusion]{DBLP:conf/cvpr/ZhuYZRCS0K23}{
+			Generates apparel try-on results with significant body shape and pose modification (FID 13.447). But focuses on upper body clothing and does not experiment with full body try-on. Further, performance with more complex backgrounds is unknown.
+		}
+
+		\lithead[SAL-VTON]{DBLP:conf/cvpr/YanGZX23}{
+			Introduces semantically associated landmarks for virtual try-on which helps in addressing misalignment issues and improving the try-on results (FID 9.52 and SSIM 0.907). Also provides the ability to edit virtual try-on results using landmarks.
+		}
+
+		\lithead[GP-VTON]{DBLP:conf/cvpr/XieHDZDZ0L23}{
+			Preserves semantic information, avoids texture distortion, and handles challenging inputs by employing local flows to warp garment parts individually and dynamically truncating the gradient in the overlap area, effectively avoiding texture squeezing problems. Easily extendeds to a multi-category scenarios. FID 11.98 and SSIM 0.94. However, computational requirements of the proposed techniques, Local-Flow Global-Parsing and Dynamic Gradient Truncation, are not discussed, and has a lack of evaluation on a wider range of datasets.
+		}
+
+		\lithead[MGD]{DBLP:journals/corr/abs-2304-02051}{
+			Incorporates multimodal inputs such as text, body pose, and sketches and outperforms other competitors (5.57 FID) in terms of realism and coherence with multimodal inputs. Also introduces new semi-automatically annotated datasets.
+		}
+
 	\subsection{Pose-guided human synthesis}
 		These systems are also image-based, but they focus on transforming a human image from reference to target pose while preserving style but changing clothing.
+
+		\lithead{DBLP:conf/cvpr/SongZLM19}{
+			Proposed method simplifies non-rigid deformation learning through semantic parsing transformation and appearance generation tasks. Semantic generative network aids in transforming semantic parsing maps, facilitating deformation learning. Appearance generative network synthesizes semantic-aware textures for realistic person images. End-to-end training refines results, leading to improved performance. SSIM 0.736.
+		}
+		
+		\lithead{DBLP:conf/iccv/AlbaharH19}{
+			Proposes a conditioning scheme for controlled image synthesis with diverse guidance signals and a bi-directional feature transformation for enhanced information flow. Applicable to tasks like person image synthesis, sketch-to-photo, and depth upsampling. SSIM 0.767.
+		}
+
+		\lithead{DBLP:conf/cvpr/LiHL19}{
+			3D appearance flow enables precise pixel transfer for realistic pose transformation. Scarce annotations are overcome by fitting a 3D model and projecting to 2D for dense appearance flow computation. Synthesized ground-truths efficiently map input and target poses to 3D appearance flow for accurate pose transfer. Feature warping with appearance flow creates photorealistic target pose images. SSIM 0.778.
+		}
+		
+		\lithead{DBLP:journals/corr/abs-1906-07251}{
+			Two discriminators differentiate between real and generated images, ensuring fashion item consistency in synthesis. Image and pose encoders provide crucial context for high-quality image generation. End-to-end training optimizes generative model parameters for photorealistic image synthesis. SSIM 0.789.
+		}
+
+		\lithead{DBLP:conf/iccv/LiuPML0G19}{
+			3D body mesh recovery module enables pose and shape disentanglement for personalized modeling. Liquid Warping GAN with Liquid Warping Block preserves vital details in both image and feature spaces. Supports flexible warping from multiple sources, yielding diverse results. SSIM 0.84.
+		}
+
+		\lithead[APS]{DBLP:conf/ijcai/HuangXCWZWHD20}{
+			Couples target pose with conditioned appearance for realistic person image generation. Introduction of adaptive patch normalization improves performance through region-specific normalization. Decoupling and re-coupling of factors offer high flexibility in generating person images. SSIM 0.775.
+		}
+
+		\lithead{DBLP:conf/cvpr/MenMJML20}{
+			Attribute-Decomposed GAN enables precise attribute control in image synthesis. Automatic separation of attributes eliminates manual annotation, enhancing realism. SSIM 0.772. However, dependency on labeled data may limit applicability in scenarios lacking readily available annotations.
+		}
+		
+		\lithead[PoNA]{DBLP:journals/tip/LiZLLD20}{
+			GANs enhance image quality for realistic pose transfer results. Pose-Guided Non-Local Attention (PoNA) mechanism with long-range dependency addresses feature information gaps and self-occlusion issues. Integration of pre-posed image-guided pose feature update and post-posed image feature update improves feature utilization in the transfer process. Simplified cascaded blocks in the generator ensure network simplicity, stability, and ease of training. Method generates sharper, detailed images with fewer parameters and faster speed, increasing efficiency for pose transfer tasks. SSIM 0.775. However, pose-guided attention struggles with invisible areas, posing limitations in occlusion handling. Simplified block structure may struggle with complex poses, impacting result accuracy. GAN reliance may lead to mode collapse or instability, affecting image quality and diversity. Difficulty in preserving fine details and accurately transferring textures, especially with significant coordinate differences.
+		}
+
+		\lithead[SPAdaIN]{DBLP:conf/cvpr/WangWFLZXZ20}{
+			Works directly on identity meshes, bypassing need for specific additional information. 3D SPAdaIN extends successful 2D SPADE \cite{DBLP:conf/cvpr/Park0WZ19} approach, enabling effective pose transfer. SPAdaIN ResBlocks ensure high-quality output meshes with combined pose and identity information. Edge regularization maintains geometric details for enhanced results. However, dependency on high-quality identity meshes and pose information may hinder practical use in some scenarios.
+		}
+
+		\lithead{DBLP:journals/tip/RenLLL20}{
+			Enables accurate feature-level spatial transformations, enhancing pose-guided image generation. Combination of flow-based operations and attention improves training stability and gradient propagation. FID 10.573. However, has difficulty excluding irrelevant info which affects texture accuracy in the global attention model.
+		}
+		
+		\lithead{DBLP:journals/corr/abs-2008-11898}{
+			Enables high-resolution appearance transfer without 3D model, enhancing accessibility and efficiency. Utilizes dense local descriptors for refined details and preserved garment textures and geometry. Progressive training in autoencoder improves generation quality at high resolutions. Realistically reproduces complex garment appearance, including occluded areas, for accurate transfer. Experimental results demonstrate potential for applications like garment transfer and pose-guided video generation. SSIM 0.806. However, global perceptual loss may not preserve sharp garment textures, as noted in ablation study. Computational complexity and efficiency not discussed, potentially impacting practical use. SSIM 0.806.
+		}
+
+		\lithead{DBLP:journals/corr/abs-2006-01435}{
+			Simplifies portrait editing, eliminating manual software use, allows simultaneous revision of posture, body figure, and clothing style by using a GAN-based method which maintains coherency and preserves identity in recaptured portraits. Layout map guides appearance transformation, enhancing accuracy. Hierarchical knowledge aids in effective recapture, especially for invisible parts. FID 15.936 and SSIM 0.778.
+		}
+
+		\lithead{DBLP:journals/tog/AlBaharLYSSH21}{
+			Conditional StyleGAN enables accurate pose-guided image synthesis. Inpainted Correspondence Field facilitates detail transfer for drastic pose changes. Spatially Varying Latent Space Modulation preserves local details and photo-realism. FID 6.0557 and SSIM 0.7711.
+		}
+
+		\lithead[PATN]{DBLP:journals/pami/ZhuHXSCB22}{
+			GANs enhance image realism and shape consistency, yielding visually appealing results. Pose-Attentional Transfer Netowrk allows accurate and natural-looking pose transfers through intermediate representations. Perceptual L1 loss integration reduces pose distortions, enhancing image quality. SSIM 0.773. However, limited diversity in training data may affect real-world adaptability.
+		}
+
+		\lithead[CASD]{DBLP:conf/eccv/ZhouYCSGL22}{
+			Enables controlled person image synthesis by blending source style with target pose. Self-attention aids accurate source appearance encoding, enhancing model effectiveness. Contextual loss, computed using VGG-19 \cite{DBLP:journals/corr/SimonyanZ14a} features, facilitates image transformation. FID 11.3732 and SSIM 0.7248.
+		}
+
+		\lithead[InsetGAN]{DBLP:conf/cvpr/FruhstuckSSMWL22}{
+			Combines pretrained GANs for diverse full-body human image generation. Specialized GANs enable seamless integration of parts, ensuring high-quality results. Relies however, on pretrained GANs, potentially limiting adaptability to new domains. Coordinating multiple generators can be complex, requiring careful tuning and coordination.
+		}
+
 
 	\subsection{Multi-pose guided virtual try-on}
 		These systems are a step up from pose-guided systems; given a input image of a person, the target clothing, and a target pose, these attempt to generate the person in the target clothing in the target pose.
 
+        \lithead[FIT-ME]{DBLP:conf/icip/HsiehCCSC19}{
+            Allows for the generation of consecutive poses, providing users with more information to make informed decisions about purchasing clothes.
+        }
+
+        \lithead[MG-VTON]{DBLP:conf/iccv/DongLSWLZH019}{
+            Introduces a three-stage approach that addresses challenges such as self-occlusions, misalignment among diverse poses, and diverse clothes texture. IS 2.03 and SSIM 0.744. Use of a deep Warp-GAN helps alleviate the misalignment problem between the input human pose and desired human pose.
+        }
+
+        \lithead[3D MP-VTON]{DBLP:journals/access/ThaiMAW21}{
+            Allows for accurate texture mapping, which is crucial for natural clothing rendering from arbitrary views. FID 13.715. Greatly reduces segmentation label imbalance, resulting in high-quality segmentation and reduced training time.
+        }
+
+        \lithead[SPG-VTON]{DBLP:journals/tmm/HuLZR22}{
+            Introduces three submodules - semantic prediction module (SPM), clothes warping module (CWM), and try-on synthesis module (TSM) - that work together to generate virtual try-on images with preserved clothing details and desired poses. IS 3.14 and SSIM 0.752.
+        }
+
+        \lithead[CF-VTON]{du2023cf}{
+            Addresses challenges of unnatural garment alignment and difficulty in preserving the person's identity. FID 12.38. Includes predicting the "after-try-on" semantic map, warping the garment using an improved GANet, synthesizing a coarse result with TSN.
+        }
+
 	\subsection{Video virtual try-on}
 		Video virtual try-on systems fit target clothes onto a person in a video with spatio-temporal consistency. This is challenging because usual image-based try-on methods cause frame-to-frame inconsistencies when applied to video data.
 
+        \lithead[ShineOn]{DBLP:conf/wacv/KuppaJLLM21}{
+            Provides clarity on quantifying the isolated visual effect of different design choices and specifies key hyperparameter details for experimental reproduction. SSIM 0.94. Demonstrates that GELU and ReLU activation functions are the most effective in the experiments.
+        }
+
+        \lithead[MV-VTON]{DBLP:conf/mm/ZhongWTLW21}{
+            Transfers desired clothes to frame images through pose alignment and region-wise pixel replacement. Embeds generated frames into the latent space as external memory for subsequent frame generation.
+        }
+
+        \lithead[ClothFormer]{DBLP:conf/cvpr/JiangWYL22}{
+            Generates realistic, harmonious, and spatio-temporally consistent try-on videos in complicated environments. VFID 3.967 and SSIM 0.921. Predicts dense flow mapping between body and clothing regions, addressing the challenge of generating accurate warping when occlusions appear in the clothing region
+        }
+
 	\subsection{3D virtual try-on}
 		3D virtual try-on systems reconstruct 3D meshes of the person and clothing from the target images and then fit the clothing onto the person in attempts to generate a physically accurate 3D render.
+
+        \lithead[ULNeF]{DBLP:conf/wacv/MajithiaPBGSS22}{
+            Allows for mix-and-match VTO, addressing the combinatorial complexity of mixing different garments. Works directly on neural implicit representations, which can bring a change of paradigm and open the door to radically different approaches in VTO. Has only been validated with garments in T-pose and lacks other variations.
+        }
+
+        \lithead{DBLP:conf/nips/SantestebanOTC22}{
+            Use of fixed topology parametric template mesh models for known types of garments allows for easy mapping of high-quality texture from input catalog images to UV map panels. SSIM 0.977. Proposed pipeline is compact and scalable, making it suitable for practical implementation.
+        }
 
 	\subsection{Augmented reality try-on}
 		Augmented reality virtual try-on is the eventual goal of all try-on systems, integrating computer-generated imagery with real-world views, enabling users to virtually try on clothing and accessories in real-time.
@@ -150,4 +299,34 @@
 
 
 	\subsection{Commercial uses of virtual try-on}
-		Companies are also using virtual try-on systems to provide enhanced experience to customers. Though many of them are limited to items like accessories and make-up, clothing try-ons are not far away.
+		Companies are also using virtual try-on systems to provide enhanced experience to customers. Table \ref{table:commercial-vton} lists the various commercially available virtual try-on platforms.
+
+		\newcommand{\commrow}[3]{
+			\citeauthor{#1} \cite{#1} & \citeyear{#1} & #2 & #3 \\ \addlinespace
+		}
+
+		\newcolumntype{B}{>{\hsize=.6\hsize}X}
+		\newcolumntype{s}{>{\hsize=.2\hsize}X}
+
+		\begin{table}[H]
+			\caption{Commercial virtual try-on}
+			\label{table:commercial-vton}
+			\begin{tabularx}{\columnwidth}{BsBX}
+				\toprule
+					\textbf{Authors} &
+					\textbf{Year} &
+					\textbf{Technology} &
+					\textbf{Type} \\
+				\midrule
+					\commrow{Zalando}{AR}{Clothing}
+					\commrow{GoogleShopping}{2D}{Clothing \& Accessories}
+					\commrow{WalmartB}{2D + Pose}{Clothing \& Accessories}
+					\commrow{WalmartA}{2D}{Clothing \& Accessories}
+					\commrow{Snapchat}{AR}{Clothing \& Accessories}
+					\commrow{YTAR}{AR}{Makeup}
+					\commrow{BaumeMercier}{AR}{Wrist watches}
+					\commrow{LOreal}{AR}{Makeup}
+					\commrow{WarbyParker}{AR}{Eyewear}
+				\bottomrule
+			\end{tabularx}
+		\end{table}
