@@ -215,4 +215,34 @@
 		Augmented reality virtual try-on is the eventual goal of all try-on systems, integrating computer-generated imagery with real-world views, enabling users to virtually try on clothing and accessories in real-time.
 		
 	\subsection{Commercial uses of virtual try-on}
-		Companies are also using virtual try-on systems to provide enhanced experience to customers. Though many of them are limited to items like accessories and make-up, clothing try-ons are not far away.
+		Companies are also using virtual try-on systems to provide enhanced experience to customers. Table \ref{table:commercial-vton} lists the various commercially available virtual try-on platforms.
+
+		\newcommand{\commrow}[3]{
+			\citeauthor{#1} \cite{#1} & \citeyear{#1} & #2 & #3 \\ \addlinespace
+		}
+
+		\newcolumntype{B}{>{\hsize=.6\hsize}X}
+		\newcolumntype{s}{>{\hsize=.2\hsize}X}
+
+		\begin{table}[H]
+			\caption{Commercial virtual try-on}
+			\label{table:commercial-vton}
+			\begin{tabularx}{\columnwidth}{BsBX}
+				\toprule
+					\textbf{Authors} &
+					\textbf{Year} &
+					\textbf{Technology} &
+					\textbf{Type} \\
+				\midrule
+					\commrow{Zalando}{AR}{Clothing}
+					\commrow{GoogleShopping}{2D}{Clothing \& Accessories}
+					\commrow{WalmartB}{2D + Pose}{Clothing \& Accessories}
+					\commrow{WalmartA}{2D}{Clothing \& Accessories}
+					\commrow{Snapchat}{AR}{Clothing \& Accessories}
+					\commrow{YTAR}{AR}{Makeup}
+					\commrow{BaumeMercier}{AR}{Wrist watches}
+					\commrow{LOreal}{AR}{Makeup}
+					\commrow{WarbyParker}{AR}{Eyewear}
+				\bottomrule
+			\end{tabularx}
+		\end{table}
