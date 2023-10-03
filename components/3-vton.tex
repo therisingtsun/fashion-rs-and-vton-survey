@@ -298,31 +298,24 @@
 		Companies are also using virtual try-on systems to provide enhanced experience to customers. Table \ref{table:commercial-vton} lists the various commercially available virtual try-on platforms.
 
 		\newcommand{\commrow}[3]{
-			\citeauthor{#1} \cite{#1} & \citeyear{#1} & #2 & #3 \\ \addlinespace
+			#2 & \cite{#1} & #3 \\ \addlinespace
 		}
-
-		\newcolumntype{B}{>{\hsize=.6\hsize}X}
-		\newcolumntype{s}{>{\hsize=.2\hsize}X}
 
 		\begin{table}[H]
 			\caption{Commercial virtual try-on}
 			\label{table:commercial-vton}
-			\begin{tabularx}{\columnwidth}{BsBX}
+			\begin{tabularx}{\columnwidth}{BMX}
 				\toprule
-					\textbf{Authors} &
-					\textbf{Year} &
 					\textbf{Technology} &
-					\textbf{Type} \\
+					\textbf{References} &
+					\textbf{Limitations} \\
 				\midrule
-					\commrow{Zalando}{AR}{Clothing}
-					\commrow{GoogleShopping}{2D}{Clothing \& Accessories}
-					\commrow{WalmartB}{2D + Pose}{Clothing \& Accessories}
-					\commrow{WalmartA}{2D}{Clothing \& Accessories}
-					\commrow{Snapchat}{AR}{Clothing \& Accessories}
-					\commrow{YTAR}{AR}{Makeup}
-					\commrow{BaumeMercier}{AR}{Wrist watches}
-					\commrow{LOreal}{AR}{Makeup}
-					\commrow{WarbyParker}{AR}{Eyewear}
+					\commrow{WalmartA, WalmartB, GoogleShopping}{2d (+ Pose)}{
+						AI-generated variations of models wearing garments are not true representations of the user trying on the garment.
+					}
+					\commrow{Zalando, Snapchat, YTAR, BaumeMercier, LOreal, WarbyParker}{Augmented Reality}{
+						Most implementations only focus on accessories like eyewear, wrist watches, or shoes, or makeup instead of actual clothing items.
+					}
 				\bottomrule
 			\end{tabularx}
 		\end{table}

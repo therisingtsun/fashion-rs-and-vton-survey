@@ -20,6 +20,105 @@
 			\item \textbf{Explainable recommendation:} An explanation clarifies why something was recommended to the user. Explanations are more transparent than black-box recommendations and improve the user experience in a variety of ways. They enhance user trust and understanding, lead to error detection and correction, mitigate bias and promote fairness, and increase user engagement. In recent years, more work has been done on explainable fashion recommendation \cite{DBLP:journals/tomccap/YangSFWDN21, DBLP:journals/www/LiCH21, 9522737, DBLP:journals/tkde/LinRCRMR20, DBLP:conf/wacv/TangsengO20, DBLP:conf/ijcai/HouWCLZL19, DBLP:conf/sigir/ChenCXZ0QZ19}.
 		\end{enumerate}
 	
+		\newcommand{\checkif}[1]{
+			\ifthenelse{\equal{#1}{Y}}{\checkmark}{}
+		}
+		\newcommand{\rsrow}[8]{
+			\citeauthor{#1} \cite{#1} & \citeyear{#1} & #2 &
+			\checkif{#3} &
+			\checkif{#4} &
+			\checkif{#5} &
+			\checkif{#6} &
+			\checkif{#7} &
+			\checkif{#8}
+			\\
+		}
+		
+		\begin{table*}
+			\caption{Recommendation Systems}
+			\label{table:rs}
+			\begin{tabularx}{\textwidth}{
+				p{2.8cm} p{0.5cm} X |
+				>{\centering\arraybackslash}p{0.6cm} 
+				>{\centering\arraybackslash}p{1.4cm} |
+				>{\centering\arraybackslash}p{0.75cm}
+				>{\centering\arraybackslash}p{0.6cm}
+				>{\centering\arraybackslash}p{1.3cm} |
+				>{\centering\arraybackslash}p{1.5cm}
+			}
+				\toprule
+					\textbf{Authors} &
+					\textbf{Year} &
+					\textbf{Technique(s)} &
+					\multicolumn{2}{c|}{\textbf{User Inputs}} &
+					\multicolumn{3}{c|}{\textbf{Outputs}} &
+					\textbf{Personalized}
+					\\
+					& & &
+					Body Attr. & Interactions\footnotemark[1] &
+					Compat. & Outfit Gen. & Explainable
+					& \\
+				\midrule
+					\rsrow{DBLP:journals/eswa/MoZPW23}{
+						Transformer $\rightarrow$ Transformer
+					}{Y}{}{Y}{Y}{}{Y}
+					\rsrow{10049142}{
+						Contextual Attention Network
+					}{}{}{Y}{Y}{}{}
+					\rsrow{DBLP:journals/eswa/BalimO23}{
+						CNN $\rightarrow$ LSTM + Transformer
+					}{}{Y}{Y}{}{Y}{}
+					\rsrow{9857004}{
+						Triplet Network
+					}{}{}{Y}{Y}{}{}
+					\rsrow{9893574}{
+						Bi-LSTM, GAN
+					}{}{}{Y}{Y}{}{}
+					\rsrow{9775146}{
+						Bi-LSTM
+					}{}{}{Y}{Y}{}{}
+					\rsrow{DBLP:journals/tomccap/YangSFWDN21}{
+						Representation Learning
+					}{}{Y}{Y}{Y}{Y}{}
+					\rsrow{DBLP:conf/iccvw/KimSMSSP21}{
+						CNN + Projection Head
+					}{}{}{Y}{Y}{}{}
+					\rsrow{9156535}{
+						CNN + Triplet Network
+					}{}{}{Y}{Y}{}{}
+					\rsrow{DBLP:conf/sigir/DongWSDN20}{
+						Bi-LSTM
+					}{}{}{Y}{Y}{}{}
+					\rsrow{DBLP:journals/ijon/SunHWZP20}{
+						LSTM + Triplet Network
+					}{}{}{Y}{Y}{}{}
+					\rsrow{9156794}{
+						CNN + SMPL Est. $\rightarrow$ Joint Embedding
+					}{Y}{}{Y}{Y}{Y}{Y}
+					\rsrow{DBLP:conf/sigir/LiW0CXC20}{
+						Heirarchical Graph Network
+					}{}{}{Y}{Y}{}{}
+					\rsrow{DBLP:journals/corr/abs-2005-06584}{
+						Relational Network + VSE
+					}{}{}{Y}{Y}{}{}
+					\rsrow{DBLP:conf/aaai/YangMLWC19}{
+						Unified Embedding Space
+					}{}{}{Y}{}{}{}
+					\rsrow{DBLP:conf/kdd/ChenHXGGSLPZZ19}{
+						BPR + CNN $\rightarrow$ Transformer
+					}{}{Y}{Y}{Y}{}{Y}
+					\rsrow{DBLP:conf/mm/SongHLCXN19}{
+						CNN + TextCNN
+					}{}{Y}{Y}{Y}{}{Y}
+					\rsrow{DBLP:conf/www/YinL0019}{
+						Triplet Network
+					}{}{}{Y}{}{}{}
+				\bottomrule
+				\addlinespace
+				\multicolumn{9}{l}{\textit{\footnotemark[1] Purchase data, comments, ratings, reviews}}
+			\end{tabularx}
+		\end{table*}
+	
 	\subsection{Recent works}
 		Approaches from recent literature on clothing and fashion recommendation systems are listed below. They claim to outperform state-of-the-art methods \cite{DBLP:conf/sigir/LiuWW17, DBLP:conf/icdm/KangFWM17, DBLP:conf/sigir/ChenZ0NLC17, DBLP:conf/aaai/HeM16}.
 
@@ -65,6 +164,10 @@
 	
 		\lithead{DBLP:conf/iccvw/KimSMSSP21}{
 			Presents a self-supervised learning framework that can learn color and texture-aware features without labeling, thus being better suited for transfer learning. However, assumes similar colors and textures are compatible and does not explore complementary nature of differently colored or textured items.
+		}
+
+		\lithead{DBLP:journals/tomccap/YangSFWDN21}{
+			Presents an attribute-wise explainable fashion compatibility model using representation learning. Although it uses general user preferences from dataset, it does not consider specific user preference while querying, leading to results which are not personalized.
 		}
 		
 		\lithead{9775146}{
