@@ -1,9 +1,9 @@
-\section{Virtual try-on} \label{section:vton}
+\section{\textbf{Virtual try-on}} \label{section:vton}
 	Virtual try-On systems represent a cutting-edge fusion of technology and fashion retail, revolutionizing the way consumers interact with clothing online. These systems utilize artificial intelligence, computer vision, and augmented reality to simulate the experience of trying on clothing virtually. Users can see how garments fit, drape, and look on their own bodies without physically trying them on. From 2D image-based try-ons to advanced 3D models, these systems offer a range of immersive experiences.
 	
 	The goal of virtual try-on is not only to enhance user confidence and satisfaction, but also to reduce return rates, making it a pivotal tool in modern e-commerce. It showcases the potential of technology to bridge the gap between digital and physical retail, offering consumers an engaging and informative way to make fashion choices online.
 
-	\subsection{Image-based (2D) virtual try-on}
+	\subsection{\textbf{Image-based (2D) virtual try-on}}
 		Image-based try-on systems take in images as input data and generate images as output data. The systems infer data like pose, warp, and occlusion of the target and then use that information to guide the generation of the post-try-on image.
 
 		In \citeyear{DBLP:conf/iccvw/AyushJCHK19} \lithead{DBLP:conf/iccvw/AyushJCHK19}{
@@ -106,7 +106,7 @@
 			preserves semantic information, avoids texture distortion, and handles challenging inputs by employing local flows to warp garment parts individually and dynamically truncating the gradient in the overlap area, effectively avoiding texture squeezing problems. It also easily extendeds to a multi-category scenarios.
 		}
 
-	\subsection{Pose-guided human synthesis}
+	\subsection{\textbf{Pose-guided human synthesis}}
 		These systems are also image-based, but they focus on transforming a human image from reference to target pose while preserving style but changing clothing.
 
 		\lithead{DBLP:conf/cvpr/SongZLM19}{
@@ -177,8 +177,7 @@
 			Combines pretrained GANs for diverse full-body human image generation. Specialized GANs enable seamless integration of parts, ensuring high-quality results. Relies however, on pretrained GANs, potentially limiting adaptability to new domains. Coordinating multiple generators can be complex, requiring careful tuning and coordination.
 		}
 
-
-	\subsection{Multi-pose guided virtual try-on}
+	\subsection{\textbf{Multi-pose guided virtual try-on}}
 		These systems are a step up from pose-guided systems; given a input image of a person, the target clothing, and a target pose, these attempt to generate the person in the target clothing in the target pose.
 
         \lithead[FIT-ME]{DBLP:conf/icip/HsiehCCSC19}{
@@ -201,7 +200,7 @@
             Addresses challenges of unnatural garment alignment and difficulty in preserving the person's identity. FID 12.38. Includes predicting the "after-try-on" semantic map, warping the garment using an improved GANet, synthesizing a coarse result with TSN.
         }
 
-	\subsection{Video virtual try-on}
+	\subsection{\textbf{Video virtual try-on}}
 		Video virtual try-on systems fit target clothes onto a person in a video with spatio-temporal consistency. This is challenging because usual image-based try-on methods cause frame-to-frame inconsistencies when applied to video data.
 
         \lithead[ShineOn]{DBLP:conf/wacv/KuppaJLLM21}{
@@ -216,7 +215,7 @@
             Generates realistic, harmonious, and spatio-temporally consistent try-on videos in complicated environments. VFID 3.967 and SSIM 0.921. Predicts dense flow mapping between body and clothing regions, addressing the challenge of generating accurate warping when occlusions appear in the clothing region
         }
 
-	\subsection{3D virtual try-on}
+	\subsection{\textbf{3D virtual try-on}}
 		3D virtual try-on systems reconstruct 3D meshes of the person and clothing from the target images and then fit the clothing onto the person in attempts to generate a physically accurate 3D render.
 
         \lithead[ULNeF]{DBLP:conf/wacv/MajithiaPBGSS22}{
@@ -227,7 +226,7 @@
             Use of fixed topology parametric template mesh models for known types of garments allows for easy mapping of high-quality texture from input catalog images to UV map panels. SSIM 0.977. Proposed pipeline is compact and scalable, making it suitable for practical implementation.
         }
 
-	\subsection{Augmented reality try-on}
+	\subsection{\textbf{Augmented reality try-on}}
 		Augmented reality virtual try-on is the eventual goal of all try-on systems, integrating computer-generated imagery with real-world views, enabling users to virtually try on clothing and accessories in real-time.
 		
 		\lithead{DBLP:conf/ieeehpcs/JongM19}{
@@ -270,7 +269,7 @@
 			Explores the role of AR as meta-user interface. It also covers case study on focus group that validates design patterns, providing insights for improvements.
 		}
 
-	\subsection{Commercial uses of virtual try-on}
+	\subsection{\textbf{Commercial uses of virtual try-on}}
 		Companies are also using virtual try-on systems to provide enhanced experience to customers. Table \ref{table:commercial-vton} lists the various commercially available virtual try-on platforms.
 
 		\newcommand{\commrow}[3]{
