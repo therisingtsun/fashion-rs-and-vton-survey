@@ -109,166 +109,119 @@
 	\subsection{Pose-guided human synthesis}
 		These systems are also image-based, but they focus on transforming a human image from reference to target pose while preserving style but changing clothing.
 
-		\lithead{DBLP:conf/cvpr/SongZLM19}{
-			Proposed method simplifies non-rigid deformation learning through semantic parsing transformation and appearance generation tasks. Semantic generative network aids in transforming semantic parsing maps, facilitating deformation learning. Appearance generative network synthesizes semantic-aware textures for realistic person images. End-to-end training refines results, leading to improved performance. SSIM 0.736.
-		}
+        In \citeyear{DBLP:conf/cvpr/SongZLM19} \lithead{DBLP:conf/cvpr/SongZLM19} {
+            proposed a method that simplified non-rigid deformation learning by using semantic parsing transformation and appearance generation tasks and attempting end-to-end training which lead to refined results. Semantic generative network helped in transforming semantic parsing maps which in turn facilitates deformation learning. Appearance generative network synthesizes semantic-aware textures for realistic person images. 
+        }
+
+        For tasks like person image synthesis, sketch-to-photo and depth up sampling, \lithead{DBLP:conf/iccv/AlbaharH19}{
+            proposed a conditioning scheme with diverse guidance signals and a bi-directional feature transformation for enhanced information flow.
+        } 
+
+        For realistic pose transformation with precise pixel transfer, 3D appearance flow is much better. \lithead{DBLP:conf/cvpr/LiHL19} {
+            observed that scarce annotations can be overcome by fitting a 3D model and projecting to 2D for dense appearence flow computation. For accurate pose transfer, synthesized gropund-truths were able able to map target poses to 3D appearence flow leading to accurate pose transfer. Such workflow lead to photorealistic images of the target pose.
+        }
 		
-		\lithead{DBLP:conf/iccv/AlbaharH19}{
-			Proposes a conditioning scheme for controlled image synthesis with diverse guidance signals and a bi-directional feature transformation for enhanced information flow. Applicable to tasks like person image synthesis, sketch-to-photo, and depth upsampling. SSIM 0.767.
-		}
+		Two discriminators were used by \cite{DBLP:journals/corr/abs-1906-07251} to differentiate between real and generated images which ensured that the fashion item remains consistent during synthesis. Image and pose encoders provided crucial context for high-quality image generation and end-to-end training optimized generative model parameters for synthesis of photorealistic images.
 
-		\lithead{DBLP:conf/cvpr/LiHL19}{
-			3D appearance flow enables precise pixel transfer for realistic pose transformation. Scarce annotations are overcome by fitting a 3D model and projecting to 2D for dense appearance flow computation. Synthesized ground-truths efficiently map input and target poses to 3D appearance flow for accurate pose transfer. Feature warping with appearance flow creates photorealistic target pose images. SSIM 0.778.
-		}
+        Personalized modelling and shape disentanglement was enabled by 3D body mesh recovery module. \cite{DBLP:conf/iccv/LiuPML0G19} realized that Liquid Warping GAN with Liquid Warping Block preserves vital details in both image and feature spaces and it also supported flexible warping from multiple sources which led to diverse results.
+
+        In \citeyear{DBLP:conf/ijcai/HuangXCWZWHD20} \cite{DBLP:conf/ijcai/HuangXCWZWHD20} introduced adaptive patch normalization which improved performance through region specific normalization. It coupled target pose with conditioned appearance for realistic image generation. High flexibility was observed because of decoupling and recoupling of factors. 
+        
+        \cite{DBLP:conf/cvpr/MenMJML20} built an Attribute-Decomposed GAN which enabled precise control of attributes during image synthesis. The automatic separation of attributes removed manual annotations and led to enhanced realism. The dependency on labelled data, however, may limit applicability in situations lacking readily available annotations.
+
+        GANs can be used to enhance the quality of images which is useful in realistic pose transfer. \lithead[PoNA]{DBLP:journals/tip/LiZLLD20}{
+            has a long range dependency that addresses feature information gaps and self-occlusion issues. Integration of pre-posed image-guided pose feature update and post-posed image feature update improves feature utilization in the transfer process. The method generated sharper, detailed images with lesser parameters and faster speed which increased efficiency for pose transfer tasks. Struggles with invisible areas, complex poses because of simplified block structure and posing limitations in occlusion handling were observed. Reliance on GAN was expected to cause mode collapse or instability in certain scenarios and it also faced difficulty in preserving fine details and precise transfer of textures when there were significant coordinate differences.
+        }
+
+        \lithead[SPAdaIN]{DBLP:conf/cvpr/WangWFLZXZ20}{
+            extends the already 2D SPADE \cite{DBLP:conf/cvpr/Park0WZ19} approach, enabling effective pose transfer. It works directly on identity meshes, bypassing need for specific additional information. SPAdaIN ResBlocks ensure high-quality output meshes with combined pose and identity information. Geometric details are maintained by edge regularization for enhanced results. Downside to this approach is it's reliance on high quality identity meshes and pose information may hinder practical use in certain scenarios.
+        }
+        
+        Combination of flow-based operations and attention was observed by \cite{DBLP:journals/tip/RenLLL20}  to improve training stability and gradient propagation. It enables accurate feature-level spatial transformation, enhancing pose-guided image generation. Irrelevant info adversely the texture accuracy in the global attention model. 
 		
-		\lithead{DBLP:journals/corr/abs-1906-07251}{
-			Two discriminators differentiate between real and generated images, ensuring fashion item consistency in synthesis. Image and pose encoders provide crucial context for high-quality image generation. End-to-end training optimizes generative model parameters for photorealistic image synthesis. SSIM 0.789.
-		}
-
-		\lithead{DBLP:conf/iccv/LiuPML0G19}{
-			3D body mesh recovery module enables pose and shape disentanglement for personalized modeling. Liquid Warping GAN with Liquid Warping Block preserves vital details in both image and feature spaces. Supports flexible warping from multiple sources, yielding diverse results. SSIM 0.84.
-		}
-
-		\lithead[APS]{DBLP:conf/ijcai/HuangXCWZWHD20}{
-			Couples target pose with conditioned appearance for realistic person image generation. Introduction of adaptive patch normalization improves performance through region-specific normalization. Decoupling and re-coupling of factors offer high flexibility in generating person images. SSIM 0.775.
-		}
-
-		\lithead{DBLP:conf/cvpr/MenMJML20}{
-			Attribute-Decomposed GAN enables precise attribute control in image synthesis. Automatic separation of attributes eliminates manual annotation, enhancing realism. SSIM 0.772. However, dependency on labeled data may limit applicability in scenarios lacking readily available annotations.
-		}
-		
-		\lithead[PoNA]{DBLP:journals/tip/LiZLLD20}{
-			GANs enhance image quality for realistic pose transfer results. Pose-Guided Non-Local Attention (PoNA) mechanism with long-range dependency addresses feature information gaps and self-occlusion issues. Integration of pre-posed image-guided pose feature update and post-posed image feature update improves feature utilization in the transfer process. Simplified cascaded blocks in the generator ensure network simplicity, stability, and ease of training. Method generates sharper, detailed images with fewer parameters and faster speed, increasing efficiency for pose transfer tasks. SSIM 0.775. However, pose-guided attention struggles with invisible areas, posing limitations in occlusion handling. Simplified block structure may struggle with complex poses, impacting result accuracy. GAN reliance may lead to mode collapse or instability, affecting image quality and diversity. Difficulty in preserving fine details and accurately transferring textures, especially with significant coordinate differences.
-		}
-
-		\lithead[SPAdaIN]{DBLP:conf/cvpr/WangWFLZXZ20}{
-			Works directly on identity meshes, bypassing need for specific additional information. 3D SPAdaIN extends successful 2D SPADE \cite{DBLP:conf/cvpr/Park0WZ19} approach, enabling effective pose transfer. SPAdaIN ResBlocks ensure high-quality output meshes with combined pose and identity information. Edge regularization maintains geometric details for enhanced results. However, dependency on high-quality identity meshes and pose information may hinder practical use in some scenarios.
-		}
-
-		\lithead{DBLP:journals/tip/RenLLL20}{
-			Enables accurate feature-level spatial transformations, enhancing pose-guided image generation. Combination of flow-based operations and attention improves training stability and gradient propagation. FID 10.573. However, has difficulty excluding irrelevant info which affects texture accuracy in the global attention model.
-		}
-		
-		\lithead{DBLP:journals/corr/abs-2008-11898}{
-			Enables high-resolution appearance transfer without 3D model, enhancing accessibility and efficiency. Utilizes dense local descriptors for refined details and preserved garment textures and geometry. Progressive training in autoencoder improves generation quality at high resolutions. Realistically reproduces complex garment appearance, including occluded areas, for accurate transfer. Experimental results demonstrate potential for applications like garment transfer and pose-guided video generation. SSIM 0.806. However, global perceptual loss may not preserve sharp garment textures, as noted in ablation study. Computational complexity and efficiency not discussed, potentially impacting practical use. SSIM 0.806.
-		}
+        Enhanced accessibility and efficiency because of high-resolution appearance transfer without 3D model was attempted by \cite{DBLP:journals/corr/abs-2008-11898}. It utilized dense local descriptors for refined details and preserved garment textures and geometry. The progressive training in autoencoder improved generation quality at high resolutions. It realistically reproduces complex garment appearance, including occluded areas, for accurate transfer. However, global perceptual loss might not be able to preserve sharp garment textures, as noted in ablation study.
 
 		\lithead{DBLP:journals/corr/abs-2006-01435}{
-			Simplifies portrait editing, eliminating manual software use, allows simultaneous revision of posture, body figure, and clothing style by using a GAN-based method which maintains coherency and preserves identity in recaptured portraits. Layout map guides appearance transformation, enhancing accuracy. Hierarchical knowledge aids in effective recapture, especially for invisible parts. FID 15.936 and SSIM 0.778.
+			simplified portrait editing and eliminated manual software use. It also allowed simultaneous revision of posture, body figure, and clothing style through use of a GAN-based method which maintained coherency and found to preserve identity in recaptured portraits. The layout map guided appearance transformation leading to enhanced accuracy. The hierarchical knowledge aided in effective recapture, especially for invisible parts.
 		}
 
-		\lithead{DBLP:journals/tog/AlBaharLYSSH21}{
-			Conditional StyleGAN enables accurate pose-guided image synthesis. Inpainted Correspondence Field facilitates detail transfer for drastic pose changes. Spatially Varying Latent Space Modulation preserves local details and photo-realism. FID 6.0557 and SSIM 0.7711.
+		In the year \citeyear{DBLP:journals/tog/AlBaharLYSSH21} \lithead{DBLP:journals/tog/AlBaharLYSSH21}{ developed conditional StyleGAN which enabled accurate pose-guided image synthesis. The Inpainted Correspondence Field facilitated detail transfer for drastic pose changes. The Spatially Varying Latent Space Modulation preserved local details and photo-realism.
 		}
 
-		\lithead[PATN]{DBLP:journals/pami/ZhuHXSCB22}{
-			GANs enhance image realism and shape consistency, yielding visually appealing results. Pose-Attentional Transfer Netowrk allows accurate and natural-looking pose transfers through intermediate representations. Perceptual L1 loss integration reduces pose distortions, enhancing image quality. SSIM 0.773. However, limited diversity in training data may affect real-world adaptability.
-		}
+        A discussed earlier, GANs have been used to enhance image realism and shape consistency which in turn leads to appealing results, acting as high resolution data for training models. In \citeyear{DBLP:journals/pami/ZhuHXSCB22} \lithead[PATN]{DBLP:journals/pami/ZhuHXSCB22}{
+            developed Pose-Attentional Transfer Network which allowed accurate and natural-looking pose transfers through intermediate representations. Pose distortions were reduced and image quality increased because of Perceptual L1 loss integration.
+        }
 
 		\lithead[wFlow]{DBLP:conf/cvpr/DongZXZDZLLY22}{
-			Is capable of transferring arbitrary garments onto challengingly-posed query person images in real-world backgrounds. Efficiently integrates the advantages of 2D pixel-flow and 3D vertex-flow. The self-supervised training scheme used in the paper leverages easily obtainable dance videos to train the model. FID 8.89. However, since it focuses on garment transfer in the context of dance videos, it is unclear how well it performs on a large scale or with diverse datasets.
+			is capable of transferring arbitrary garments onto challengingly-posed query person images in real-world backgrounds. It efficiently integrates the advantages of 2D pixel-flow and 3D vertex-flow. The self-supervised training scheme used in the paper leverages easily obtainable dance videos to train the model. However, since it focuses on garment transfer in the context of dance videos, it is unclear how well it performs on a large scale or with diverse datasets.
 		}
 
-		\lithead[CASD]{DBLP:conf/eccv/ZhouYCSGL22}{
-			Enables controlled person image synthesis by blending source style with target pose. Self-attention aids accurate source appearance encoding, enhancing model effectiveness. Contextual loss, computed using VGG-19 features, facilitates image transformation. FID 11.3732 and SSIM 0.7248.
-		}
+		Controlled person image synthesis by blending source style with target pose was attempted by \lithead[CASD]{DBLP:conf/eccv/ZhouYCSGL22}{
+            Self-attention aided accurate source appearance encoding which enhanced model effectiveness. Contextual loss was computed using VGG-19 features which facilitated image transformation.
+        } 
+		
 
 		\lithead[InsetGAN]{DBLP:conf/cvpr/FruhstuckSSMWL22}{
-			Combines pretrained GANs for diverse full-body human image generation. Specialized GANs enable seamless integration of parts, ensuring high-quality results. Relies however, on pretrained GANs, potentially limiting adaptability to new domains. Coordinating multiple generators can be complex, requiring careful tuning and coordination.
+			combined pretrained GANs for diverse full-body human image generation. Specialized GANs enabled seamless integration of parts which ensured  high-quality results. It relies however, on pretrained GANs, which potentially, might limits its adaptability to new domains. Also, coordinating multiple generators can be complex, requiring careful tuning and coordination.
 		}
 
 
 	\subsection{Multi-pose guided virtual try-on}
 		These systems are a step up from pose-guided systems; given a input image of a person, the target clothing, and a target pose, these attempt to generate the person in the target clothing in the target pose.
 
-        \lithead[FIT-ME]{DBLP:conf/icip/HsiehCCSC19}{
-            Allows for the generation of consecutive poses, providing users with more information to make informed decisions about purchasing clothes.
-        }
-
-        \lithead[MG-VTON]{DBLP:conf/iccv/DongLSWLZH019}{
-            Introduces a three-stage approach that addresses challenges such as self-occlusions, misalignment among diverse poses, and diverse clothes texture. IS 2.03 and SSIM 0.744. Use of a deep Warp-GAN helps alleviate the misalignment problem between the input human pose and desired human pose.
-        }
+        Generation of consecutive poses using \cite{DBLP:conf/icip/HsiehCCSC19} provides more information for the user to make more informed decisions while purchasing clothes. \cite{DBLP:conf/iccv/DongLSWLZH019} introduced a three-stage approach that addressed challenges such as self-occlusions, misalignment among diverse poses, and diverse clothes texture. The misalignment between the input human pose and the target pose is alleviated by the use of deep Warp-GAN.
 
         \lithead[3D MP-VTON]{DBLP:journals/access/ThaiMAW21}{
-            Allows for accurate texture mapping, which is crucial for natural clothing rendering from arbitrary views. FID 13.715. Greatly reduces segmentation label imbalance, resulting in high-quality segmentation and reduced training time.
+            allowed for accurate texture mapping, which is crucial for natural clothing rendering from arbitrary views and it greatly reduces segmentation label imbalance which results in high-quality segmentation and reduced training time.
         }
 
-        \lithead[SPG-VTON]{DBLP:journals/tmm/HuLZR22}{
-            Introduces three submodules - semantic prediction module (SPM), clothes warping module (CWM), and try-on synthesis module (TSM) - that work together to generate virtual try-on images with preserved clothing details and desired poses. IS 3.14 and SSIM 0.752.
-        }
-
-        \lithead[CF-VTON]{du2023cf}{
-            Addresses challenges of unnatural garment alignment and difficulty in preserving the person's identity. FID 12.38. Includes predicting the "after-try-on" semantic map, warping the garment using an improved GANet, synthesizing a coarse result with TSN.
-        }
+        Three submodules - semantic prediction module (SPM), clothes warping module (CWM), and try-on synthesis module (TSM) which worked together \cite{DBLP:journals/tmm/HuLZR22}  and generated visual try-on images with preserved clothing details and desired poses. \cite{du2023cf} also addressed the challenges of preserving the person's identity and unnatural garment alignment. The proposed model CF-VTON includes predicting the "after-try-on" semantic map, warping the garment using an improved GANet and synthesizing a coarse result with TSN.
+        
 
 	\subsection{Video virtual try-on}
 		Video virtual try-on systems fit target clothes onto a person in a video with spatio-temporal consistency. This is challenging because usual image-based try-on methods cause frame-to-frame inconsistencies when applied to video data.
 
-        \lithead[ShineOn]{DBLP:conf/wacv/KuppaJLLM21}{
-            Provides clarity on quantifying the isolated visual effect of different design choices and specifies key hyperparameter details for experimental reproduction. SSIM 0.94. Demonstrates that GELU and ReLU activation functions are the most effective in the experiments.
-        }
-
-        \lithead[MV-VTON]{DBLP:conf/mm/ZhongWTLW21}{
-            Transfers desired clothes to frame images through pose alignment and region-wise pixel replacement. Embeds generated frames into the latent space as external memory for subsequent frame generation.
+        \cite{DBLP:conf/wacv/KuppaJLLM21} through the use of ReLU and GeLU as the most effective activation functions, provided clarity on quantifying the isolated visual effect of different design choices. It also specified hyperparameter details for experimental reproduction. \lithead[MV-VTON]{DBLP:conf/mm/ZhongWTLW21}{
+            transfers desired clothes to frame images through pose alignment and region-wise pixel replacement. It embeds generated frames into the latent space as external memory for subsequent frame generation.
         }
 
         \lithead[ClothFormer]{DBLP:conf/cvpr/JiangWYL22}{
-            Generates realistic, harmonious, and spatio-temporally consistent try-on videos in complicated environments. VFID 3.967 and SSIM 0.921. Predicts dense flow mapping between body and clothing regions, addressing the challenge of generating accurate warping when occlusions appear in the clothing region
+            generates realistic, harmonious, and spatio-temporally consistent try-on videos in complicated environments. It predicts dense flow mapping between body and clothing regions which addresses the challenge of generating accurate warping when occlusions appear in the clothing region.
         }
 
 	\subsection{3D virtual try-on}
 		3D virtual try-on systems reconstruct 3D meshes of the person and clothing from the target images and then fit the clothing onto the person in attempts to generate a physically accurate 3D render.
 
         \lithead[ULNeF]{DBLP:conf/wacv/MajithiaPBGSS22}{
-            Allows for mix-and-match VTO, addressing the combinatorial complexity of mixing different garments. Works directly on neural implicit representations, which can bring a change of paradigm and open the door to radically different approaches in VTO. Has only been validated with garments in T-pose and lacks other variations.
+            allows for mix-and-match VTO, addressing the combinatorial complexity of mixing different garments. It works directly on neural implicit representations, which can bring a change of paradigm and open the door to radically different approaches in VTO. It has only been validated with garments in T-pose and lacks other variations.
         }
 
-        \lithead{DBLP:conf/nips/SantestebanOTC22}{
-            Use of fixed topology parametric template mesh models for known types of garments allows for easy mapping of high-quality texture from input catalog images to UV map panels. SSIM 0.977. Proposed pipeline is compact and scalable, making it suitable for practical implementation.
-        }
+        The use of fixed topology parametric template mesh models by \cite{DBLP:conf/nips/SantestebanOTC22} for known types of garments allows for easy mapping of high-quality texture from input catalog images to UV map panels. The proposed pipeline is compact and scalable which makes it suitable for practical implementation.
 
 	\subsection{Augmented reality try-on}
 		Augmented reality virtual try-on is the eventual goal of all try-on systems, integrating computer-generated imagery with real-world views, enabling users to virtually try on clothing and accessories in real-time.
 		
-		\lithead{DBLP:conf/ieeehpcs/JongM19}{
-			Suggests the use of simple to collect video dataset that is sufficient to successfully achieve transfer of clothing segmentations rather than using the DeepFashion dataset. But using short video datasets may limit dataset size and diversity.
-		}
+        The use of simple video dataset to successfully achieve transfer of clothing segmentation rather than using the DeepFashion dataset was proposed by \lithead{DBLP:conf/ieeehpcs/JongM19} {
+            but the use of short video datasets may limit dataset size and diversity.
+        }
 
-		\lithead{DBLP:journals/ijim/El-SeoudT19}{
-			Provides the study of developing a Mobile Augmented Reality (MAR) application that helps store managers help in sales strategy and proposing using of AR in market and helping customer in aiding decision making without physically wearing the clothes. But it also bring the issue of long term viability and sustainabilty of such solution.
-		}
+		\cite{DBLP:journals/ijim/El-SeoudT19} provides the study of developing a Mobile Augmented Reality (MAR) application that helps store managers in sales strategy and proposing using of AR in market and helping customer in aiding decision making without physically wearing the clothes but it also bring the issue of long term viability and sustainability of such solution.
 
 		\lithead{di2020comparative}{
-			Proposes the use of four neural models: Fully Connected Neural Network, CNN, MobileNetV1 \cite{DBLP:journals/corr/HowardZCKWWAA17}, and MobileNetV2 \cite{DBLP:conf/cvpr/SandlerHZZC18}, to classify clothing images for computationally limited platforms on which augmented reality is often implemented. Using MobileNetV2 improves the accuracy to 92.91\% but increases training time significantly.
+			proposes the use of four neural models: Fully Connected Neural Network, CNN, MobileNetV1 \cite{DBLP:journals/corr/HowardZCKWWAA17}, and MobileNetV2 \cite{DBLP:conf/cvpr/SandlerHZZC18}, to classify clothing images for computationally limited platforms on which augmented reality is often implemented. Using MobileNetV2 improves the accuracy to 92.91\% but increases training time significantly.
 		}
 
-		\lithead[]{hashmi2020augmented}{
-			Introduces a computationally inexpensive technique using web cam input and Haar cascade classifier \cite{DBLP:conf/cvpr/ViolaJ01} that helps avoid the use of costly kinect sensors. But the sample size used limits generalizability to broader populations. Also, Haar cascade classifier may have limitations in accurately detecting specific body parts, especially under varying lighting conditions and poses.
+		\cite[]{hashmi2020augmented}{
+			introduces a computationally inexpensive technique using web cam input and Haar cascade classifier \cite{DBLP:conf/cvpr/ViolaJ01} that helps avoid the use of costly kinect sensors. But the sample size used limits generalizability to broader populations. Also, Haar cascade classifier may have limitations in accurately detecting specific body parts, especially under varying lighting conditions and poses.
 		}
 
-		\lithead[]{baytar2020evaluating}{
-			Provides the study of using AR to help online shoppers choose their correct size and help them choose the best option based upon various attributes. Stimulus-Organism-Response model was used to investigate how AR products were percieved by consumers. But the limited dataset reduces the generalizability of the findings. Another limitation was that the garments were 2D and did not wrap around the body.
-		}
+        Providing the study of using AR to help online shoppers choose their correct size and help them choose the best option based upon various attributes Stimulus-Organism-Response model \cite{baytar2020evaluating} was used to investigate how AR products were perceived by consumers but the limited dataset reduces the generalizability of the findings. Another limitation was that the garments were 2D and did not wrap around the body.
 
-		\lithead[AVATAR]{shaw2020advanced}{
-			Is capable of providing virtual apparel trial using AR. Advanced Virtual Apparel Try using Augmented Reality (AVATAR) provides a hardware solution using a multi-sensor body scanner for precise body coordinates. It also facilitates face color recognition, providing personalized apparel recommendations based on skin tone. But no insights about real-world implementation challenges were provided and no information regarding accuracy and reliability of sensors was discussed.
-		}
+        Advanced Virtual Apparel Try using Augmented Reality (AVATAR) \cite{shaw2020advanced} is capable of providing virtual apparel trial using AR. It provides a hardware solution using a multi-sensor body scanner for precise body coordinates. It also facilitates face color recognition, providing personalized apparel recommendations based on skin tone but no insights about real-world implementation challenges were provided and no information regarding accuracy and reliability of sensors was discussed.
 
-		\lithead[]{ali2021augmented}{
-			Explores the use of smartphone camera to provide 3d image of product using AR which provides real time AR by using a camera and YOLO for detection. But using YOLO introduces constraints on bounding box predictions, impacting small object detection and unusual configurations. Also, selective search in Faster R-CNN \cite{DBLP:journals/pami/RenHG017} can be time-consuming, affecting overall performance.
-		}
+		\cite[]{ali2021augmented} explores the use of smartphone camera to provide 3d image of product using AR which provides real time AR by using a camera and YOLO for detection but using YOLO introduces constraints on bounding box predictions, impacting small object detection and unusual configurations. Also, selective search in Faster R-CNN \cite{DBLP:journals/pami/RenHG017} can be time-consuming, affecting overall performance.
 
-		\lithead[]{feng2021personalized}{
-			Proposes the use of AR, Azure Kinect somatosensory, and OpenGL 3D rendering to provide virtual try on experience and enhance clothing customization.
-		}
-
-		\lithead[]{moriuchi2021engagement}{
-			Provides an insight about use of chatbots and AR technology in e-commerce. But the included study based upon small sample size of 68 millennials may limit generalizability.
-		}
-		
-		\lithead[]{DBLP:journals/sensors/BattistoniGRSVB22}{
-			Explores the role of AR as meta-user interface. It also covers case study on focus group that validates design patterns, providing insights for improvements.
-		}
+		\cite[]{feng2021personalized} proposes the use of AR, Azure Kinect somatosensory, and OpenGL 3D rendering to provide virtual try on experience and enhance clothing customization. \cite[]{moriuchi2021engagement} provides an insight about use of chatbots and AR technology in e-commerce. But the included study based upon small sample size of 68 millennials may limit generalizability. \cite[]{DBLP:journals/sensors/BattistoniGRSVB22} explores the role of AR as meta-user interface. It also covers case study on focus group that validates design patterns, providing insights for improvements.
 
 	\subsection{Commercial uses of virtual try-on}
 		Companies are also using virtual try-on systems to provide enhanced experience to customers. Table \ref{table:commercial-vton} lists the various commercially available virtual try-on platforms.
