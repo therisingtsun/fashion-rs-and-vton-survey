@@ -120,76 +120,68 @@
 		\end{table*}
 	
 	\subsection{Recent works}
-		Approaches from recent literature on clothing and fashion recommendation systems are listed below. They claim to outperform state-of-the-art methods \cite{DBLP:conf/sigir/LiuWW17, DBLP:conf/icdm/KangFWM17, DBLP:conf/sigir/ChenZ0NLC17, DBLP:conf/aaai/HeM16}.
+		Approaches from recent literature on clothing and fashion recommendation systems are explored below. They all claim to outperform state-of-the-art methods \cite{DBLP:conf/sigir/LiuWW17, DBLP:conf/icdm/KangFWM17, DBLP:conf/sigir/ChenZ0NLC17, DBLP:conf/aaai/HeM16} and present novel ideas for tackling the task.
 
-		\lithead{DBLP:conf/www/YinL0019}{
-			Proposes knowledge learning method that uses both visual compatibility relationships and style information. But uses AUC as a metric, which has the risk of only recommending popular items which have a lot of similarities and overlap.
+		In \citeyear{DBLP:conf/www/YinL0019} \lithead{DBLP:conf/www/YinL0019}{
+			propose a knowledge learning method that uses both visual compatibility relationships and style information. They also acknowledge that AUC alone as a metric of performance is not enough for recommendation systems as it has the risk of only recommending popular items which have a lot of similarities and overlap even if they are not relevant to the user.
 		}
 		
-		\lithead{DBLP:conf/mm/SongHLCXN19}{
-			Proposes a model for both general compatibility and personalized preference modeling which characterizes item-item and user-item interactions. However, uses a simple linear fusion strategy for combining general compatibility and personalized preference instead of an advanced strategies like attentive fusion.
-		}
+		A model for both general compatibility and personalized preference modeling which characterizes item-item and user-item interactions is presented by \lithead{DBLP:conf/mm/SongHLCXN19}{} However, they use a simple linear fusion strategy for combining general compatibility and personalized preference instead of an advanced strategies like attentive fusion.
 		
 		\lithead{DBLP:conf/kdd/ChenHXGGSLPZZ19}{
-			Uses a transformer to propose a Personalized Outfit Generaion model and deploys it on an industrial-scale application. But since it operates on a commercial platform, it is more susceptible to the cold-start problem as newer items and users get added.
+			use a transformer to propose a Personalized Outfit Generaion model and deploys it on an industrial-scale application. But since it operates on a commercial platform, it is more susceptible to the cold-start problem as newer items and users get added.
 		}
 		
-		\lithead{DBLP:conf/aaai/YangMLWC19}{
-			Proposes a framework which places items in a unified embedding space where category complementary relations are encoded as vector translations. However, needs more exploration of fine-grained relations beyond just category-level co-occurrence to include rules based on color, texture, style, etc.
-		}
-
-		\lithead{DBLP:journals/corr/abs-2005-06584}{
-			Propose the use of a relational network to develop new compatibility learning models to move past limitations associated with considering entire outfits. But does not consider personalilzed attributes and only measures compatibilitiy of outfit items.
+		A framework is proposed by \lithead{DBLP:conf/aaai/YangMLWC19}{
+			which places items in a unified embedding space where category complementary relations are encoded as vector translations. However, such embeddings need more exploration of fine-grained relations beyond just category-level co-occurrence to include rules based on color, texture, style, etc.
 		}
 		
-		\lithead{DBLP:conf/sigir/LiW0CXC20}{
-			Jointly trains fashion compatibility and personalized outfit recommendations for optimal results using graph networks. However, can improve further by using multi-modal inputs and incorporating them into the graph network.
-		}
+		In \citeyear{DBLP:journals/corr/abs-2005-06584} \lithead{DBLP:journals/corr/abs-2005-06584}{
+			suggest the use of a relational network to develop new compatibility learning models to move past limitations associated with considering entire outfits, and
+		} \lithead{DBLP:conf/sigir/LiW0CXC20}{
+			jointly train fashion compatibility and personalized outfit recommendations for optimal results using graph networks.
+		} However, neither of these approaches consider personal preferences and can improve further by using multi-modal inputs and incorporating them into the graph network.
 		
 		\lithead{9156794}{
-			Proposes an embedding to identify garments that are compatible with user's body shape and demonstrates how to learn the embedding from catalog images of models of various shapes and sizes wearing fashion items. But only focuses on shape and size, and not on other factors like color, texture, or style.
+			propose an embedding to identify garments that are compatible with user's body shape and demonstrate how to learn the embedding from catalog images of models of various shapes and sizes wearing fashion items. They use the SMPL \cite{SMPL:2015} model to describe the body attributes.
 		}
 		
-		\lithead{DBLP:journals/ijon/SunHWZP20}{
-			Proposes a multimodal framework which uses both semantic and visual embeddings for a unified deep learning model. However, triplet loss training using a negative for each reference can create bias against pairings which might otherwise work for certain situations.
-		}
-		
-		\lithead{DBLP:conf/sigir/DongWSDN20}{
-			Proposes multi-modal try-on-guided compatibility modeling scheme to learn compatibility via the try-on appearance of outfit rather than individual items. But does not account for personalized attributes like body shape or color.
+		A multi-modal framework is presented by \lithead{DBLP:journals/ijon/SunHWZP20}{
+			which uses both semantic and visual embeddings for a unified deep learning model.
+		} \lithead{DBLP:conf/sigir/DongWSDN20}{
+			propose TryOnCM, another multi-modal try-on-guided compatibility modeling scheme to learn compatibility via the try-on appearance of outfit rather than individual items.
 		}
 
 		\lithead{9156535}{
-			Proposes a scalable approach via category-based subspace attention networks, and introduces outfit ranking loss function to better model item relationships in an entire outfit. Does not however, use text features to learn joint visual and text embedding which could improve results further.
+			demonstrate a scalable approach via category-based subspace attention networks, and introduce an outfit ranking loss function to better model item relationships in an entire outfit.
 		}
 	
-		\lithead{DBLP:conf/iccvw/KimSMSSP21}{
-			Presents a self-supervised learning framework that can learn color and texture-aware features without labeling, thus being better suited for transfer learning. However, assumes similar colors and textures are compatible and does not explore complementary nature of differently colored or textured items.
-		}
-
-		\lithead{DBLP:journals/tomccap/YangSFWDN21}{
-			Presents an attribute-wise explainable fashion compatibility model using representation learning. Although it uses general user preferences from dataset, it does not consider specific user preference while querying, leading to results which are not personalized.
+		In \citeyear{DBLP:conf/iccvw/KimSMSSP21} \lithead{DBLP:conf/iccvw/KimSMSSP21}{
+			present a self-supervised learning framework that can learn color and texture-aware features without labeling, thus being better suited for transfer learning. But it assumes similar colors and textures are compatible and does not explore complementary nature of differently colored or textured items.
+		} \lithead{DBLP:journals/tomccap/YangSFWDN21}{
+			propose an attribute-wise explainable fashion compatibility model using representation learning. Although it uses general user preferences from dataset, it does not consider specific user preference while querying, leading to results which are not personalized.
 		}
 		
-		\lithead{9775146}{
-			Treats outfits as sequence of items and uses a Bi-LSTM to capture latent interaction between items. But uses naïve method to derive local contents by making vertical strips of try-on outfit instead of a robust segmentation or other spatial model.
+		In \citeyear{9775146}, as a successor to TryOnCM \cite{DBLP:conf/sigir/DongWSDN20}, \lithead[TryonCM2]{9775146}{
+			is presented, treating outfits as a sequence of items and using a Bi-LSTM to capture latent interaction between items. But the naïve method used to derive local contents by making vertical strips of the try-on outfit image instead of a robust segmentation or other spatial models causes the implementation to suffer.
 		}
 		
-		\lithead{9893574}{
-			Proposes outfit generation framework using a semantic alignment module and a collocation classification module. However, computational complexity for outfit of size N items is $O(N)$ as the framework needs $(N - 1)$ item generators to synthesize complementary fashion items.
+		An outfit generation framework is proposed by \lithead{9893574}{
+			which uses a semantic alignment module and a collocation classification module. However, computational complexity for outfit of size N items is $O(N)$ as the framework needs $(N - 1)$ item generators to synthesize complementary fashion items.
 		}
 
 		\lithead{9857004}{
-			Proposes a framework that learns compatibility of entire outfits modeled as unordered sets using self-attention. But does not consider multi-dimensional image features and only relies on gross features and categorical text descriptions.
+			present a framework that learns compatibility of entire outfits modeled as unordered sets using self-attention. But it does not consider multi-dimensional image features and only relies on gross features and categorical text descriptions to guide the process.
 		}
 
-		\lithead{DBLP:journals/eswa/BalimO23}{
-			Presents a new dataset with clothing images and user comments on compatibility, and uses this to train a compatibility suggestion text generator. Does not however, evaluate compatibility score, and only provides simplistic textual feedback of whether outfit is compatible or not.
+		In \citeyear{DBLP:journals/eswa/BalimO23} \lithead{DBLP:journals/eswa/BalimO23}{
+			present a new dataset with clothing images and user comments on compatibility, and use this to train a compatibility suggestion text generator. This does not however, evaluate a compatibility score, and only provides simplistic textual feedback of whether outfit is compatible or not.
 		}
 
 		\lithead{10049142}{
-			Combines a categorical dynamic graph convolutional network with multi-layered visual outputs and surrounding contextual information to obtain better fashion characteristics. But does not account for user preferences or personalized styles.
+			combine a categorical dynamic graph convolutional network with multi-layered visual outputs and surrounding contextual information to obtain better fashion characteristics.
 		}
 
-		\lithead{DBLP:journals/eswa/MoZPW23}{
-			Poses personalized outfit compatibility as a multi-label classification problem and uses two transformers to discover correlation between visual image features, fashion and physical attributes. However, imbalance of fashion item attribute distribution and outfit physical label distribution makes the multi-label classification task challenging.
+		And finally, \lithead{DBLP:journals/eswa/MoZPW23}{
+			pose personalized outfit compatibility as a multi-label classification problem and use two transformers to discover correlation between visual image features, fashion and physical attributes. The downside to this being an imbalance of fashion-item attribute distribution and outfit physical-label distribution which makes the multi-label classification task challenging.
 		}

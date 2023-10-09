@@ -28,12 +28,8 @@
 \newcolumntype{s}{>{\hsize=.2\hsize}X}
 
 \newcommand{\lithead}[3][]{
-	\textbf{
-		\ifthenelse{\equal{#1}{}}{\citeauthor{#2}}{#1}
-		(\citeyear{#2})
-		\cite{#2}.
-	}
-	#3
+	\ifthenelse{\equal{#1}{}}{\citeauthor{#2}}{#1}
+	\cite{#2}\ifthenelse{\equal{#3}{}}{.}{ #3}
 }
 
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
