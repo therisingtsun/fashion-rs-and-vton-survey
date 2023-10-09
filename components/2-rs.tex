@@ -118,9 +118,9 @@
 				\multicolumn{9}{l}{\textit{\footnotemark[1] Purchase data, comments, ratings, reviews}}
 			\end{tabularx}
 		\end{table*}
-	
+		
 	\subsection{\textbf{Recent works}}
-		Approaches from recent literature on clothing and fashion recommendation systems are explored below. They all claim to outperform state-of-the-art methods \cite{DBLP:conf/sigir/LiuWW17, DBLP:conf/icdm/KangFWM17, DBLP:conf/sigir/ChenZ0NLC17, DBLP:conf/aaai/HeM16} and present novel ideas for tackling the task.
+		Approaches from recent literature on clothing and fashion recommendation systems are explored below. They all claim to outperform state-of-the-art methods \cite{DBLP:conf/aaai/HeM16, DBLP:conf/sigir/LiuWW17, DBLP:conf/icdm/KangFWM17, DBLP:conf/sigir/ChenZ0NLC17} and present novel ideas for tackling the task.
 
 		In \citeyear{DBLP:conf/www/YinL0019} \lithead{DBLP:conf/www/YinL0019}{
 			propose a knowledge learning method that uses both visual compatibility relationships and style information. They also acknowledge that AUC alone as a metric of performance is not enough for recommendation systems as it has the risk of only recommending popular items which have a lot of similarities and overlap even if they are not relevant to the user.
@@ -185,3 +185,35 @@
 		And finally, \lithead{DBLP:journals/eswa/MoZPW23}{
 			pose personalized outfit compatibility as a multi-label classification problem and use two transformers to discover correlation between visual image features, fashion and physical attributes. The downside to this being an imbalance of fashion-item attribute distribution and outfit physical-label distribution which makes the multi-label classification task challenging.
 		}
+
+	\subsection{\textbf{Algorithms for clothing recommendation}}
+		Clothing or fashion recommendation is a task that can be broken down into two major subtasks: fashion embedding, and recommendation.
+
+		Fashion embedding is the process of representing fashion items like clothing, accessories, and footwear, as numerical vectors in a high-dimensional space. These vectors capture the semantic and stylistic features of fashion items, making them suitable for various tasks within the fashion domain, such as recommendation, retrieval, and classification. The following techniques may be used to create such embeddings:
+
+		\begin{enumerate}
+			\item \textit{Convolutional Neural Networks (CNNs)} process images in layers of learnable filters, and are a fundamental deep learning architecture for image feature extraction.
+			\item \textit{Siamese Networks} are used for learning similarity between pairs of fashion items. They consist of twin neural networks with shared weights which are trained to produce similar embeddings for similar items and dissimilar embeddings for different items.
+			\item \textit{Triplet Networks} extend the concept of Siamese networks by learning embeddings for anchor, positive, and negative examples. These networks aim to minimize the distance between embeddings of similar items (anchor and positive) while maximizing the distance between embeddings of dissimilar items (anchor and negative).
+			\item \textit{Word Embeddings} like Word2Vec, GloVe, or FastText can be used to convert textual descriptions, product names, and user-generated content like comments and reviews into semantic embeddings. These embeddings capture the meaning and context of fashion-related text.
+			\item \textit{Self-Supervised Learning} techniques, like rotation prediction or colorization, can be applied to fashion images to learn useful embeddings by defining pretext tasks and training the model to solve them.
+			\item \textit{Transfer Learning} leverages pretrained embeddings from models trained on large-scale datasets and fine-tunes them on a fashion-specific dataset.
+			\item \textit{Graph Neural Networks (GNNs)} can capture relationships between fashion items, such as co-purchased items, by modeling the fashion data as a graph. Node embeddings in the graph can represent fashion items.
+			\item \textit{Transformers} use self-attention mechanisms to process sequences of data, capturing relationships and dependencies. They excel in natural language processing and vision tasks, learning contextual representations from large datasets.
+		\end{enumerate}
+
+		Recommendation is the process of suggesting items to users based on their preferences, historical behavior, current trends, social interactions, and other appropriate factors. Recommendations are designed to help users discover relevant and personalized options from a large pool of choices, ultimately enhancing their user experience and decision-making. The following algorithms are commonly used for this:
+
+		\begin{enumerate}
+			\item \textit{Content-based Filtering} suggests items to users based on their past preferences and the attributes of items, matching user profiles with item features for recommendations.
+			\item \textit{Collaborative Filtering} predicts a user's preferences by analyzing past behaviors and comparing them with similar users' behaviors to recommend items they might like.
+				\begin{enumerate}
+					\item \textit{Matrix Factorization} decomposes a user-item interaction matrix into latent factors to learn representations for users and items, enabling personalized recommendations based on these factors.
+					\item \textit{Bayesian Personalized Ranking (BPR)} optimizes personalized ranking by considering pairwise preferences, learning to rank items based on user interactions, and implicit feedback data.
+				\end{enumerate}
+			\item \textit{Hybrid Approaches} combine collaborative filtering and content-based filtering methods to provide personalized recommendations, leveraging both user behavior and item attributes for improved accuracy and diversity.
+				\begin{enumerate}
+					\item \textit{Graph-Based Models} utilize graph structures to capture relationships between users, items, or content for recommendation.
+					\item \textit{Sequence-Based Models} like Recurrent Neural Networks (RNNs), Long Short-Term Memory (LSTM), and Transformers capture and leverage sequential patterns in user behavior and interactions over time.
+				\end{enumerate}
+		\end{enumerate}

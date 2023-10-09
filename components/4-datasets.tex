@@ -2,6 +2,25 @@
 	\subsection{\textbf{Datasets}}
 		Fashion AI research relies on diverse datasets containing images, product descriptions, and user interactions. They provide researchers with rich resources for training and evaluating algorithms to improve clothing recommendation, style analysis, and virtual try-on systems.
 
+		Requirements of a good dataset are as follows:
+
+		\begin{enumerate}
+			\item \textbf{Large and Diverse:} It should include a substantial number of high-quality images, covering a wide range of clothing items, styles, and categories to ensure model robustness and versatility.
+			\item \textbf{High-Quality Images:} The dataset should comprise high-resolution images with clear representations of clothing items to facilitate accurate analysis and modeling.
+			\item \textbf{Annotations:} Precise and comprehensive annotations for each image, including information on clothing attributes (e.g., color, style, pattern), product details (e.g., brand, price), and user interactions (e.g., ratings, reviews).
+			\item \textbf{Variety of Attributes:} Incorporate detailed attributes such as garment type (e.g., dresses, shoes), gender specificity, and size information to enable diverse research applications.
+			\item \textbf{User-Generated Data:} Incorporate data from real-world user interactions, including user-generated content like reviews, ratings, and comments, to capture user preferences and feedback.
+			\item \textbf{Temporal Dynamics:} Include data that capture trends, seasonality, and changing fashion styles over time, enabling research on dynamic fashion recommendation and trend analysis.
+			\item \textbf{Compatibility with AI Models:} The dataset should be well-preprocessed and formatted for compatibility with common AI and machine learning frameworks, making it readily usable for research purposes.
+			\item \textbf{Balanced Distribution:} Ensure a balanced distribution of clothing categories and attributes to prevent model biases and support fair evaluations.
+			\item \textbf{Privacy and Ethical Considerations:} Address privacy concerns and adhere to ethical standards, including obtaining proper consent for user-generated data and anonymizing sensitive information.
+			\item \textbf{Accessibility:} Make the dataset publicly accessible to encourage collaboration and transparency.
+			\item \textbf{Benchmarking:} Provide clear evaluation metrics and benchmarks, allowing researchers to assess and compare the performance of different AI models accurately.
+			\item \textbf{Updates and Maintenance:} Regularly update and maintain the dataset to reflect changing fashion trends and ensure its relevance for ongoing research.
+		\end{enumerate}
+
+		Table \ref{table:datasets} lists publicly available datasets, and Figure \ref{fig:dataset-citations} illustrates their popularity.
+
 		\newcommand{\datarow}[4]{
 			#2 \cite{#1} & \numprint{#3} & #4 \\ \addlinespace
 		}
@@ -65,25 +84,6 @@
 				\bottomrule
 			\end{tabularx}
 		\end{table}
-
-		Requirements of a good dataset are as follows:
-
-		\begin{enumerate}
-			\item \textbf{Large and Diverse:} It should include a substantial number of high-quality images, covering a wide range of clothing items, styles, and categories to ensure model robustness and versatility.
-			\item \textbf{High-Quality Images:} The dataset should comprise high-resolution images with clear representations of clothing items to facilitate accurate analysis and modeling.
-			\item \textbf{Annotations:} Precise and comprehensive annotations for each image, including information on clothing attributes (e.g., color, style, pattern), product details (e.g., brand, price), and user interactions (e.g., ratings, reviews).
-			\item \textbf{Variety of Attributes:} Incorporate detailed attributes such as garment type (e.g., dresses, shoes), gender specificity, and size information to enable diverse research applications.
-			\item \textbf{User-Generated Data:} Incorporate data from real-world user interactions, including user-generated content like reviews, ratings, and comments, to capture user preferences and feedback.
-			\item \textbf{Temporal Dynamics:} Include data that capture trends, seasonality, and changing fashion styles over time, enabling research on dynamic fashion recommendation and trend analysis.
-			\item \textbf{Compatibility with AI Models:} The dataset should be well-preprocessed and formatted for compatibility with common AI and machine learning frameworks, making it readily usable for research purposes.
-			\item \textbf{Balanced Distribution:} Ensure a balanced distribution of clothing categories and attributes to prevent model biases and support fair evaluations.
-			\item \textbf{Privacy and Ethical Considerations:} Address privacy concerns and adhere to ethical standards, including obtaining proper consent for user-generated data and anonymizing sensitive information.
-			\item \textbf{Accessibility:} Make the dataset publicly accessible to encourage collaboration and transparency.
-			\item \textbf{Benchmarking:} Provide clear evaluation metrics and benchmarks, allowing researchers to assess and compare the performance of different AI models accurately.
-			\item \textbf{Updates and Maintenance:} Regularly update and maintain the dataset to reflect changing fashion trends and ensure its relevance for ongoing research.
-		\end{enumerate}
-
-		Table \ref{table:datasets} lists publicly available datasets, and Figure \ref{fig:dataset-citations} illustrates their popularity.
 
 		\begin{figure}
 			\begin{tikzpicture}
