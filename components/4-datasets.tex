@@ -1,93 +1,238 @@
-\section{Datasets} \label{section:datasets}
-	Fashion AI research relies on diverse datasets containing images, product descriptions, and user interactions. They provide researchers with rich resources for training and evaluating algorithms to improve clothing recommendation, style analysis, and virtual try-on systems.
+\section{\textbf{Datasets and evaluation metrics}} \label{section:datasets}
+	\subsection{\textbf{Datasets}}
+		Fashion AI research relies on diverse datasets containing images, product descriptions, and user interactions. They provide researchers with rich resources for training and evaluating algorithms to improve clothing recommendation, style analysis, and virtual try-on systems.
 
-	Requirements of a good dataset are as follows:
+		Requirements of a good dataset are as follows:
 
-	\begin{enumerate}
-		\item \textbf{Large and Diverse:} It should include a substantial number of high-quality images, covering a wide range of clothing items, styles, and categories to ensure model robustness and versatility.
-		\item \textbf{High-Quality Images:} The dataset should comprise high-resolution images with clear representations of clothing items to facilitate accurate analysis and modeling.
-		\item \textbf{Annotations:} Precise and comprehensive annotations for each image, including information on clothing attributes (e.g., color, style, pattern), product details (e.g., brand, price), and user interactions (e.g., ratings, reviews).
-		\item \textbf{Variety of Attributes:} Incorporate detailed attributes such as garment type (e.g., dresses, shoes), gender specificity, and size information to enable diverse research applications.
-		\item \textbf{User-Generated Data:} Incorporate data from real-world user interactions, including user-generated content like reviews, ratings, and comments, to capture user preferences and feedback.
-		\item \textbf{Temporal Dynamics:} Include data that capture trends, seasonality, and changing fashion styles over time, enabling research on dynamic fashion recommendation and trend analysis.
-		\item \textbf{Compatibility with AI Models:} The dataset should be well-preprocessed and formatted for compatibility with common AI and machine learning frameworks, making it readily usable for research purposes.
-		\item \textbf{Balanced Distribution:} Ensure a balanced distribution of clothing categories and attributes to prevent model biases and support fair evaluations.
-		\item \textbf{Privacy and Ethical Considerations:} Address privacy concerns and adhere to ethical standards, including obtaining proper consent for user-generated data and anonymizing sensitive information.
-		\item \textbf{Accessibility:} Make the dataset publicly accessible to encourage collaboration and transparency.
-		\item \textbf{Benchmarking:} Provide clear evaluation metrics and benchmarks, allowing researchers to assess and compare the performance of different AI models accurately.
-		\item \textbf{Updates and Maintenance:} Regularly update and maintain the dataset to reflect changing fashion trends and ensure its relevance for ongoing research.
-	\end{enumerate}
+		\begin{enumerate}
+			\item \textbf{Large and Diverse:} It should include a substantial number of high-quality images, covering a wide range of clothing items, styles, and categories to ensure model robustness and versatility.
+			\item \textbf{High-Quality Images:} The dataset should comprise high-resolution images with clear representations of clothing items to facilitate accurate analysis and modeling.
+			\item \textbf{Annotations:} Precise and comprehensive annotations for each image, including information on clothing attributes (e.g., color, style, pattern), product details (e.g., brand, price), and user interactions (e.g., ratings, reviews).
+			\item \textbf{Variety of Attributes:} Incorporate detailed attributes such as garment type (e.g., dresses, shoes), gender specificity, and size information to enable diverse research applications.
+			\item \textbf{User-Generated Data:} Incorporate data from real-world user interactions, including user-generated content like reviews, ratings, and comments, to capture user preferences and feedback.
+			\item \textbf{Temporal Dynamics:} Include data that capture trends, seasonality, and changing fashion styles over time, enabling research on dynamic fashion recommendation and trend analysis.
+			\item \textbf{Compatibility with AI Models:} The dataset should be well-preprocessed and formatted for compatibility with common AI and machine learning frameworks, making it readily usable for research purposes.
+			\item \textbf{Balanced Distribution:} Ensure a balanced distribution of clothing categories and attributes to prevent model biases and support fair evaluations.
+			\item \textbf{Privacy and Ethical Considerations:} Address privacy concerns and adhere to ethical standards, including obtaining proper consent for user-generated data and anonymizing sensitive information.
+			\item \textbf{Accessibility:} Make the dataset publicly accessible to encourage collaboration and transparency.
+			\item \textbf{Benchmarking:} Provide clear evaluation metrics and benchmarks, allowing researchers to assess and compare the performance of different AI models accurately.
+			\item \textbf{Updates and Maintenance:} Regularly update and maintain the dataset to reflect changing fashion trends and ensure its relevance for ongoing research.
+		\end{enumerate}
 
-	Tables \ref{table:datasets} and \ref{table:datasets-3D} list publicly available datasets.
+		Table \ref{table:datasets} lists publicly available datasets, and Figure \ref{fig:dataset-citations} illustrates their popularity.
 
-	\newcommand{\datarow}[4]{
-		#2 \cite{#1} & \citeyear{#1} & \numprint{#3} & #4 \\
-	}
+		\newcommand{\datarow}[4]{
+			#2 \cite{#1} & \numprint{#3} & #4 \\ \addlinespace
+		}
 
-	\begin{table}[H]
-		\caption{Available fashion datasets (2D)}
-		\label{table:datasets}
-		\begin{tabularx}{\columnwidth}{XsMX}
-			\toprule
-				\textbf{Authors} &
-				\textbf{Year} &
-				\textbf{Size} &
-				\textbf{Labels} \\
-			\midrule
-				\datarow
-					{DBLP:conf/cvpr/PatelLP20}
-					{TailorNet}
-					{170156}
-					{Gender, pose, style}
-				\datarow
-					{DBLP:conf/cvpr/GeZWTL19}
-					{DeepFashion2}
-					{801000}
-					{Scale, occlusion, zoom, viewpoint, category, style, bounding-box, dense landmarks, per-pixel mask}
-				\datarow
-					{DBLP:conf/mm/ZhengYKP18}
-					{ModaNet}
-					{55176}
-					{Pixel annotation, bounding box, polygon}
-				\datarow
-					{DBLP:journals/corr/abs-1708-07747}
-					{Fashion-MNIST}
-					{70000}
-					{Category}
-				\datarow
-					{DBLP:conf/iccv/YamaguchiKB13}
-					{Paper Doll}
-					{339797}
-					{Category, pose}
-			\bottomrule
-		\end{tabularx}
-	\end{table}
+		\begin{table}
+			\caption{Available fashion datasets}
+			\label{table:datasets}
+			\begin{tabularx}{\columnwidth}{
+				>{\raggedleft\arraybackslash}p{0.5cm}
+				p{2.6cm} 
+				>{\raggedleft\arraybackslash}p{1cm} 
+				X
+			}
+				\toprule
+					\textbf{Type} &
+					\textbf{Dataset} &
+					\textbf{Size} &
+					\textbf{Labels} \\
+				\midrule
+					\textbf{2D} & \datarow
+						{DBLP:conf/cvpr/PatelLP20}
+						{TailorNet}
+						{170156}
+						{Gender, pose, style}
+					& \datarow
+						{DBLP:conf/cvpr/GeZWTL19}
+						{DeepFashion2}
+						{801000}
+						{Scale, occlusion, zoom, viewpoint, category, style, bounding-box, dense landmarks, per-pixel mask}
+					& \datarow
+						{DBLP:conf/mm/ZhengYKP18}
+						{ModaNet}
+						{55176}
+						{Pixel annotation, bounding box, polygon}
+					& \datarow
+						{DBLP:journals/corr/abs-1708-07747}
+						{Fashion-MNIST}
+						{70000}
+						{Category}
+					& \datarow
+						{DBLP:conf/iccv/YamaguchiKB13}
+						{Paper Doll}
+						{339797}
+						{Category, pose}
+					\hline \addlinespace
+					\textbf{3D} & \datarow
+						{DBLP:conf/eccv/TiwariBTP20}
+						{SIZER}
+						{2482}
+						{Gender, size, style}
+					& \datarow
+						{DBLP:conf/eccv/ZhuCJCDWCH20}
+						{Deep Fashion3D}
+						{2078}
+						{Pose, feature lines, multi-view images}
+					& \datarow
+						{DBLP:conf/iccv/BhatnagarTTP19}
+						{MGN}
+						{712}
+						{Pose, shape}
+				\bottomrule
+			\end{tabularx}
+		\end{table}
 
-	\begin{table}[H]
-		\caption{Available fashion datasets (3D)}
-		\label{table:datasets-3D}
-		\begin{tabularx}{\columnwidth}{XsMX}
-			\toprule
-				\textbf{Authors} &
-				\textbf{Year} &
-				\textbf{Size} &
-				\textbf{Labels} \\
-			\midrule
-				\datarow
-					{DBLP:conf/eccv/TiwariBTP20}
-					{SIZER}
-					{2482}
-					{Gender, size, style}
-				\datarow
-					{DBLP:conf/eccv/ZhuCJCDWCH20}
-					{Deep Fashion3D}
-					{2078}
-					{Pose, feature lines, multi-view images}
-				\datarow
-					{DBLP:conf/iccv/BhatnagarTTP19}
-					{MGN}
-					{712}
-					{Pose, shape}
-			\bottomrule
-		\end{tabularx}
-	\end{table}
+		\begin{figure}
+			\begin{tikzpicture}
+			\begin{groupplot}[
+				group style={
+					group name=dataset popularity,
+					group size=1 by 3,
+					xticklabels at=edge bottom,
+					vertical sep=0pt
+				},
+				symbolic x coords={
+					x0,
+					Deep Fashion3D,
+					Sizer,
+					ModaNet,
+					TailorNet,
+					DeepFashion2,
+					Paper Doll,
+					MGN,
+					Fashion-MNIST,
+					x100
+				},
+				xmin=x0,
+				xmax=x100,
+				xtick=data,
+			]
+				\nextgroupplot[
+					ymin=6050, ymax=6150,
+					axis x line*=top,
+					ytick={6100},
+					y=2cm/100,
+					tick style={draw=none},
+					xticklabels={},
+				]
+					\addplot[ybar, draw=none] coordinates {
+						(Deep Fashion3D, 6050)
+						(Sizer, 6050)
+						(ModaNet, 6050)
+						(TailorNet, 6050)
+						(DeepFashion2, 6050)
+						(Paper Doll, 6050)
+						(MGN, 6050)
+					};
+					\addplot[ybar, fill=black!5, nodes near coords] coordinates {
+						(Fashion-MNIST, 6114)
+					};
+
+				\nextgroupplot[
+					ymin=340, ymax=350,
+					y=4mm/10,
+					axis y discontinuity=parallel,
+					axis x line=none,
+					yticklabels={},
+					tick style={draw=none},
+					xticklabels={},
+				]
+
+				\nextgroupplot[
+					ymin=0, ymax=350,
+					axis x line*=bottom,
+					ylabel={Citations},
+					ylabel style={at={(-0.15, 0.7)}},
+					xticklabel style = {font=\scriptsize, anchor=east, rotate=90},
+					tick style={draw=none}
+				]
+					\addplot[ybar, fill=black!5] coordinates {
+						(Deep Fashion3D, 83)
+						(Sizer, 101)
+						(ModaNet, 110)
+						(TailorNet, 178)
+						(DeepFashion2, 269)
+						(Paper Doll, 276)
+						(MGN, 282)
+						(Fashion-MNIST, 350)
+					};
+					\addplot[ybar, fill=black!5, nodes near coords] coordinates {
+						(Deep Fashion3D, 83)
+						(Sizer, 101)
+						(ModaNet, 110)
+						(TailorNet, 178)
+						(DeepFashion2, 269)
+						(Paper Doll, 276)
+						(MGN, 282)
+					};
+			\end{groupplot}
+			\end{tikzpicture}
+			\caption{Dataset popularity}
+			\label{fig:dataset-citations}
+		\end{figure}
+
+	\subsection{\textbf{Evaluation metrics}}
+		Evaluation metrics are quantitative and qualitative measures used to assess the performance, quality, and effectiveness of systems. They provide objective and subjective criteria for making informed decisions.
+
+		The following metrics are commonly used for recommendation systems:
+
+		\begin{enumerate}
+			\item Accuracy:
+				\begin{enumerate}
+					\item \textit{Precision} measures the proportion of relevant recommendations among the total recommendations. It focuses on the accuracy of positive predictions.
+					\item \textit{Recall} measures the proportion of relevant recommendations that were successfully predicted. It focuses on the coverage of relevant items.
+				\end{enumerate}
+			\item Ranking:
+				\begin{enumerate}
+					\item \textit{Mean Average Precision (MAP)} measures the average precision across all users, considering the rank of relevant items in the recommendation list.
+					\item \textit{Mean Reciprocal Rank (MRR)} calculates the average reciprocal of the rank at which the first relevant item is found for each user.
+					\item \textit{Normalized Discounted Cumulative Gain (NDCG)} evaluates the ranking quality of recommended items. It gives higher scores to items that are relevant and ranked higher.
+				\end{enumerate}
+			\item Diversity:
+				\begin{enumerate}
+					\item \textit{Intra-List Diversity} measures how diverse the recommended items are within a single recommendation list.
+					\item \textit{Inter-List Diversity} assesses the diversity of recommendations across different users or recommendation lists.
+				\end{enumerate}
+			\item Coverage:
+				\begin{enumerate}
+					\item \textit{Catalog Coverage} assesses the proportion of items in the entire catalog that are recommended to at least one user.
+					\item \textit{User Coverage} measures the percentage of users for whom at least one recommendation is generated.
+				\end{enumerate}
+			\item \textit{Area Under Receiver Operating Characteristic Curve (AUC-ROC)} is used for binary recommendation tasks. It assesses the ability of the model to distinguish between positive and negative items.
+			\item \textit{Hit Rate} measures the percentage of users for whom at least one relevant item is recommended.
+			\item \textit{Mean Squared Error (MSE)} is used in rating prediction tasks to measure the squared difference between predicted and actual ratings. \textit{Root Mean Squared Error (RMSE)} is the square root of MSE to provide an interpretable error measure. \textit{Normalized RMSE} divides RMSE by the range of possible ratings, making it comparable across datasets.
+		\end{enumerate}
+		
+		For image generation (under virtual try-on) the following metrics are commonly used:
+
+		\begin{enumerate}
+			\item \textit{Fréchet Inception Distance (FID)} measures the similarity between the distribution of real images and generated images in feature space. Lower FID scores indicate better image quality and diversity.
+			\item \textit{Inception Score (IS)} evaluates the quality and diversity of generated images based on the diversity of predicted classes by an Inception classifier. Higher IS scores suggest better image quality and diversity.
+			\item \textit{Structural Similarity Index (SSIM)} measures the structural similarity between a generated image and a reference image. It assesses image quality, preserving structural details. Higher SSIM values indicate better quality.
+			\item \textit{Peak Signal-to-Noise Ratio (PSNR)} measures the peak signal-to-noise ratio between a generated image and a reference image. Higher PSNR values suggest less distortion and higher image quality.
+			\item \textit{Learned Perceptual Image Patch Similarity (LPIPS)} evaluates the perceptual similarity between generated and real images by considering local image patches. Lower LPIPS scores indicate better similarity.
+			\item \textit{Sum of Squared Differences (SSD)} calculates the sum of squared pixel-wise differences between generated and reference images. Smaller SSD values suggest closer resemblance to reference images.
+		\end{enumerate}
+
+		For video generation (under virtual try-on) the following metrics besides SSIM and PSNR are used:
+
+		\begin{enumerate}
+			\item \textit{Fréchet Video Distance (FVD)} measures the similarity between the distribution of feature embeddings from generated and real videos. Lower FVD scores indicate better video quality and diversity.
+			\item \textit{Multi-Scale Structural Similarity (MS-SSIM)} is an extension of SSIM that considers structural similarity at multiple scales. It provides a more comprehensive assessment of image quality.
+			\item \textit{Temporal Consistency and Smoothness} evaluates the temporal coherency and smoothness of generated videos, checking for flickering, jittering, ghosting, or abrupt transitions between frames.
+			\item \textit{Perceptual Video Quality Metrics} like \textit{Video Multimethod Assessment Fusion (VMAF)} and \textit{PSNR with Human Visual System accounting for visual Masking (PSNR-HVS-M)} specific video quality metrics that take into account human visual perception to assess video quality more accurately.
+		\end{enumerate}
+
+		Lastly, for augmented reality (under virtual try-on) the following metrics are used:
+
+		\begin{enumerate}
+			\item \textit{Tracking Accuracy} measures how accurately the AR system can track and overlay virtual objects onto the real world. It includes metrics like tracking error and jitter.
+			\item \textit{Latency} assesses the delay between user actions or movements and the system's response, aiming for low-latency AR experiences.
+			\item \textit{Frame Rate} evaluates the smoothness of AR rendering by measuring the number of frames displayed per second. Higher frame rates contribute to smoother and more immersive experiences.
+			\item \textit{Calibration Accuracy} measures the accuracy of spatial calibration between the physical and virtual worlds. It ensures that virtual objects align correctly with the real environment.
+			\item \textit{Stability} assesses the stability of virtual objects as users move or interact with the environment. Stable objects provide a more convincing AR experience.
+			\item \textit{Localization Accuracy} measures how accurately the AR system can determine the user's position and orientation in the real world, essential for precise object placement.
+		\end{enumerate}
