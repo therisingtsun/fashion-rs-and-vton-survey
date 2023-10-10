@@ -194,7 +194,7 @@
 		\begin{enumerate}
 			\item \textit{Convolutional Neural Networks (CNNs)} process images in layers of learnable filters, and are a fundamental deep learning architecture for image feature extraction.
 			\item \textit{Siamese Networks} are used for learning similarity between pairs of fashion items. They consist of twin neural networks with shared weights which are trained to produce similar embeddings for similar items and dissimilar embeddings for different items.
-			\item \textit{Triplet Networks} extend the concept of Siamese networks by learning embeddings for anchor, positive, and negative examples. These networks aim to minimize the distance between embeddings of similar items (anchor and positive) while maximizing the distance between embeddings of dissimilar items (anchor and negative).
+			\item \textit{Triplet Networks} extend Siamese networks by learning embeddings for anchor, positive, and negative examples. They aim to minimize distance between similar items (anchor and positive) while maximizing distance between dissimilar items (anchor and negative).
 			\item \textit{Word Embeddings} like Word2Vec, GloVe, or FastText can be used to convert textual descriptions, product names, and user-generated content like comments and reviews into semantic embeddings. These embeddings capture the meaning and context of fashion-related text.
 			\item \textit{Self-Supervised Learning} techniques, like rotation prediction or colorization, can be applied to fashion images to learn useful embeddings by defining pretext tasks and training the model to solve them.
 			\item \textit{Transfer Learning} leverages pretrained embeddings from models trained on large-scale datasets and fine-tunes them on a fashion-specific dataset.
