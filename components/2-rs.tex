@@ -24,41 +24,40 @@
 			\ifthenelse{\equal{#1}{Y}}{\checkmark}{}
 		}
 		\newcommand{\rsrow}[8]{
-			\citeauthor{#1} \cite{#1} & \citeyear{#1} & #2 &
+			\citeauthor{#1} \cite{#1} & #2 &
 			\checkif{#3} &
 			\checkif{#4} &
 			\checkif{#5} &
 			\checkif{#6} &
 			\checkif{#7} &
 			\checkif{#8}
-			\\
+			\\ \hline
 		}
-		
+
 		\begin{table*}
 			\caption{Recommendation Systems}
 			\label{table:rs}
+			\renewcommand{\arraystretch}{1.5}
 			\begin{tabularx}{\textwidth}{
-				p{2.8cm} p{0.5cm} X |
-				>{\centering\arraybackslash}p{0.6cm} 
+				p{2.8cm} X |
+				>{\centering\arraybackslash}p{0.6cm}
 				>{\centering\arraybackslash}p{1.4cm} |
 				>{\centering\arraybackslash}p{0.75cm}
 				>{\centering\arraybackslash}p{0.6cm}
 				>{\centering\arraybackslash}p{1.3cm} |
 				>{\centering\arraybackslash}p{1.5cm}
 			}
-				\toprule
+				\hline
 					\textbf{Authors} &
-					\textbf{Year} &
 					\textbf{Technique(s)} &
 					\multicolumn{2}{c|}{\textbf{User Inputs}} &
 					\multicolumn{3}{c|}{\textbf{Outputs}} &
-					\textbf{Personalized}
-					\\
-					& & &
+					\textbf{Personalized} \\
+					& &
 					Body Attr. & Interactions\footnotemark[1] &
 					Compat. & Outfit Gen. & Explainable
 					& \\
-				\midrule
+				\hline \hline
 					\rsrow{DBLP:journals/eswa/MoZPW23}{
 						Transformer $\rightarrow$ Transformer
 					}{Y}{}{Y}{Y}{}{Y}
@@ -113,16 +112,15 @@
 					\rsrow{DBLP:conf/www/YinL0019}{
 						Triplet Network
 					}{}{}{Y}{}{}{}
-				\bottomrule
 				\addlinespace
-				\multicolumn{9}{l}{\textit{\footnotemark[1] Purchase data, comments, ratings, reviews}}
+				\multicolumn{8}{l}{\textit{\footnotemark[1] Purchase data, comments, ratings, reviews}}
 			\end{tabularx}
 		\end{table*}
-		
+
 	\subsection{\textbf{Recent works}}
 		Approaches from recent literature on clothing and fashion recommendation systems are explored below. They all claim to outperform state-of-the-art methods \cite{DBLP:conf/aaai/HeM16, DBLP:conf/sigir/LiuWW17, DBLP:conf/icdm/KangFWM17, DBLP:conf/sigir/ChenZ0NLC17} and present novel ideas for tackling the task.
 
-		In \citeyear{DBLP:conf/www/YinL0019} \lithead{DBLP:conf/www/YinL0019}{
+		\lithead{DBLP:conf/www/YinL0019}{
 			propose a knowledge learning method that uses both visual compatibility relationships and style information. They also acknowledge that AUC alone as a metric of performance is not enough for recommendation systems as it has the risk of only recommending popular items which have a lot of similarities and overlap even if they are not relevant to the user.
 		}
 		
@@ -136,7 +134,7 @@
 			which places items in a unified embedding space where category complementary relations are encoded as vector translations. However, such embeddings need more exploration of fine-grained relations beyond just category-level co-occurrence to include rules based on color, texture, style, etc.
 		}
 		
-		In \citeyear{DBLP:journals/corr/abs-2005-06584} \lithead{DBLP:journals/corr/abs-2005-06584}{
+		\lithead{DBLP:journals/corr/abs-2005-06584}{
 			suggest the use of a relational network to develop new compatibility learning models to move past limitations associated with considering entire outfits, and
 		} \lithead{DBLP:conf/sigir/LiW0CXC20}{
 			jointly train fashion compatibility and personalized outfit recommendations for optimal results using graph networks.
@@ -156,16 +154,16 @@
 			demonstrate a scalable approach via category-based subspace attention networks, and introduce an outfit ranking loss function to better model item relationships in an entire outfit.
 		}
 	
-		In \citeyear{DBLP:conf/iccvw/KimSMSSP21} \lithead{DBLP:conf/iccvw/KimSMSSP21}{
+		\lithead{DBLP:conf/iccvw/KimSMSSP21}{
 			present a self-supervised learning framework that can learn color and texture-aware features without labeling, thus being better suited for transfer learning. But it assumes similar colors and textures are compatible and does not explore complementary nature of differently colored or textured items.
 		} \lithead{DBLP:journals/tomccap/YangSFWDN21}{
 			propose an attribute-wise explainable fashion compatibility model using representation learning. Although it uses general user preferences from dataset, it does not consider specific user preference while querying, leading to results which are not personalized.
 		}
-		
-		In \citeyear{9775146}, as a successor to TryOnCM \cite{DBLP:conf/sigir/DongWSDN20}, \lithead[TryonCM2]{9775146}{
+
+		As a successor to TryOnCM \cite{DBLP:conf/sigir/DongWSDN20}, \lithead[TryonCM2]{9775146}{
 			is presented, treating outfits as a sequence of items and using a Bi-LSTM to capture latent interaction between items. But the naïve method used to derive local contents by making vertical strips of the try-on outfit image instead of a robust segmentation or other spatial models causes the implementation to suffer.
 		}
-		
+
 		An outfit generation framework is proposed by \lithead{9893574}{
 			which uses a semantic alignment module and a collocation classification module. However, computational complexity for outfit of size N items is $O(N)$ as the framework needs $(N - 1)$ item generators to synthesize complementary fashion items.
 		}
@@ -174,11 +172,9 @@
 			present a framework that learns compatibility of entire outfits modeled as unordered sets using self-attention. But it does not consider multi-dimensional image features and only relies on gross features and categorical text descriptions to guide the process.
 		}
 
-		In \citeyear{DBLP:journals/eswa/BalimO23} \lithead{DBLP:journals/eswa/BalimO23}{
+		\lithead{DBLP:journals/eswa/BalimO23}{
 			present a new dataset with clothing images and user comments on compatibility, and use this to train a compatibility suggestion text generator. This does not however, evaluate a compatibility score, and only provides simplistic textual feedback of whether outfit is compatible or not.
-		}
-
-		\lithead{10049142}{
+		} \lithead{10049142}{
 			combine a categorical dynamic graph convolutional network with multi-layered visual outputs and surrounding contextual information to obtain better fashion characteristics.
 		}
 

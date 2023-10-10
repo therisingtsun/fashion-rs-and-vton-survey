@@ -6,7 +6,7 @@
 	\subsection{\textbf{Image-based (2D) virtual try-on}}
 		Image-based try-on systems take in images as input data and generate images as output data. The systems infer data like pose, warp, and occlusion of the target and then use that information to guide the generation of the post-try-on image.
 
-		In \citeyear{DBLP:conf/iccvw/AyushJCHK19} \lithead{DBLP:conf/iccvw/AyushJCHK19}{
+		\lithead{DBLP:conf/iccvw/AyushJCHK19}{
 			present a multi-scale patch adversarial loss function that improves cloth fit and texture preservation in virtual try-on. A Geometric Matching Module (GMM) enhances control over shape and pose transformations, and adversarial loss promotes realistic texture and body shape propagation. Reformulation as a conditional image generation problem offers an economical virtual try-on solution without 3D information.
 		} In another work \cite{DBLP:conf/iccvw/AyushJCK19}, they demonstrate how multi-task learning improves efficiency and task performance. Auxiliary tasks like semantic segmentation can enhance virtual try-on, and pseudo ground-truth masks aid in image fusion, leading to a better fit.
 		
@@ -26,11 +26,9 @@
 			enables high-resolution fashion model image generation, enhancing clothing shopping visualizations. Conditional StyleGAN with embedding network allows customization of outfits and poses for fashion models. Swapping style vectors in unconditional StyleGAN enhances flexibility in image generation. Further, deep pose estimator and keypoint extraction improve accuracy in representing body poses.
 		}
 
-		In \citeyear{minar2020cp} \lithead[CP-VTON+]{minar2020cp}{
+		\lithead[CP-VTON+]{minar2020cp}{
 			corrects clothing-agnostic human representation by addressing labeling and omission issues. It enhances composition masks using input clothing mask and a concrete loss function.
-		}
-
-		\lithead[WUTON]{DBLP:conf/eccv/IssenhuthMC20}{
+		} \lithead[WUTON]{DBLP:conf/eccv/IssenhuthMC20}{
 			adopts a student-teacher paradigm to improve virtual try-on performance by exploiting masked information. Adversarial loss ensures the student model mimics real image distribution, enhancing realism. A Real-time virtual try-on is achieved by omitting human parser and pose estimator at inference.
 		}
 
@@ -38,7 +36,7 @@
 			enables accurate 3D clothing reconstruction for natural shapes. 3D deformations preserve clothing characteristics, especially for large transformations or detailed textures, and the template-based approach aligns clothing image with the silhouette of the body's 3D model for precise reconstruction. SMPL model ensures accurate representation of diverse body shapes and poses. An updated TOM network enhances blending stage for improved virtual try-on results.
 		}
 
-		In \citeyear{DBLP:conf/cvpr/LiCZL21} \lithead[OVNet]{DBLP:conf/cvpr/LiCZL21}{
+		\lithead[OVNet]{DBLP:conf/cvpr/LiCZL21}{
 			presents a method to capture important details like buttons, shading, textures, and realistic hemlines, resulting in high-quality virtual try-on images. It introduces a technique for matching outfits with the most suitable model, leading to significant improvements in try-on results. It also consists of a semantic layout generator and an image generation pipeline using multiple coordinated warps, which yields consistent improvements in detail. But it does not handle variations in body shape, which limits its ability to dress garments directly on different body types. It also does not address the challenge of obtaining 3D measurements of garments and users.
 		}
 
@@ -66,7 +64,7 @@
 			supports various fashion-related tasks such as 2D pose transfer, virtual try-on, and outfit editing. It explicitly encodes the shape and texture of each garment, allowing for separate editing of these elements. A joint training on pose transfer and inpainting helps with detail preservation and coherence of generated garments. However, complex or rarely seen poses may not always be rendered correctly, and ghosting artifacts and improper filling of holes in garments can also be present.
 		}
 
-		In \citeyear{DBLP:conf/cvpr/FenocchiMCBCC22} \lithead[DBCT]{DBLP:conf/cvpr/FenocchiMCBCC22}{
+		\lithead[DBCT]{DBLP:conf/cvpr/FenocchiMCBCC22}{
 			improves the generation of virtual try-on results by dealing with long-range dependencies and achieving more realistic and accurate results and demonstrates its effectiveness in comparison to both standard pure convolutional approaches and previous transformer-based proposals.
 		}
 
@@ -94,7 +92,7 @@
 			incorporates 3D parametric human models as priors to better handle variations of pose and viewpoint. It utilizes 3D-aware global correspondences that encode global semantic correlations.
 		}
 
-		In \citeyear{DBLP:conf/cvpr/ZhuYZRCS0K23} \lithead[TryOnDiffusion]{DBLP:conf/cvpr/ZhuYZRCS0K23}{
+		\lithead[TryOnDiffusion]{DBLP:conf/cvpr/ZhuYZRCS0K23}{
 			generates apparel try-on results with significant body shape and pose modification by using a latent diffusion method \cite{DBLP:conf/cvpr/RombachBLEO22}. But it focuses on upper body clothing and does not experiment with full body try-on. Further, performance with more complex backgrounds is unknown.
 		} \lithead[MGD]{DBLP:journals/corr/abs-2304-02051}{
 			also takes this diffusion model approach and incorporates multimodal inputs such as text, body pose, and sketches and achieves good results in terms of realism and coherence with multimodal inputs. It also introduces new semi-automatically annotated datasets.
@@ -109,7 +107,7 @@
 	\subsection{\textbf{Pose-guided human synthesis}}
 		These systems are also image-based, but they focus on transforming a human image from reference to target pose while preserving style but changing clothing.
 
-		In \citeyear{DBLP:conf/cvpr/SongZLM19} \lithead{DBLP:conf/cvpr/SongZLM19} {
+		\lithead{DBLP:conf/cvpr/SongZLM19} {
 			propose a method that simplifies non-rigid deformation learning by using semantic parsing transformation and appearance generation tasks and attempting end-to-end training which lead to refined results. Semantic generative network helps in transforming semantic parsing maps which in turn facilitates deformation learning. Appearance generative network synthesizes semantic-aware textures for realistic person images.
 		}
 
@@ -129,7 +127,7 @@
 			realize that Liquid Warping GAN with Liquid Warping Block preserves vital details in both image and feature spaces and it also supports flexible warping from multiple sources which lead to diverse results.
 		}
 
-		In \citeyear{DBLP:conf/ijcai/HuangXCWZWHD20} \lithead{DBLP:conf/ijcai/HuangXCWZWHD20}{
+		\lithead{DBLP:conf/ijcai/HuangXCWZWHD20}{
 			introduce adaptive patch normalization which improves performance through region specific normalization. It couples target pose with conditioned appearance for realistic image generation. High flexibility is observed because of decoupling and recoupling of factors. 
 		}
 
@@ -155,11 +153,11 @@
 			simplify portrait editing and eliminates manual software use. It also allows simultaneous revision of posture, body figure, and clothing style through use of a GAN-based method which maintains coherency and preserves identity in recaptured portraits. The layout-map guides appearance transformation leading to enhanced accuracy. The hierarchical knowledge aids in effective recapture, especially for invisible parts.
 		}
 
-		In \citeyear{DBLP:journals/tog/AlBaharLYSSH21} \lithead{DBLP:journals/tog/AlBaharLYSSH21}{
+		\lithead{DBLP:journals/tog/AlBaharLYSSH21}{
 			develop conditional StyleGAN which enables accurate pose-guided image synthesis. The Inpainted Correspondence Field facilitates detail transfer for drastic pose changes. The Spatially Varying Latent Space Modulation preserves local details and photo-realism.
 		}
 
-		As discussed earlier, GANs have been used to enhance image realism and shape consistency which in turn leads to appealing results, acting as high resolution data for training models. In \citeyear{DBLP:journals/pami/ZhuHXSCB22} \lithead[PATN]{DBLP:journals/pami/ZhuHXSCB22}{
+		As discussed earlier, GANs have been used to enhance image realism and shape consistency which in turn leads to appealing results, acting as high resolution data for training models. \lithead[PATN]{DBLP:journals/pami/ZhuHXSCB22}{
 			demonstrates a Pose-Attentional Transfer Network which allows accurate and natural-looking pose transfers through intermediate representations. Pose distortions are reduced and image quality increases because of Perceptual L1 loss integration.
 		}
 
@@ -178,41 +176,41 @@
 	\subsection{\textbf{Multi-pose guided virtual try-on}}
 		These systems are a step up from pose-guided systems; given a input image of a person, the target clothing, and a target pose, these attempt to generate the person in the target clothing in the target pose.
 
-		In \citeyear{DBLP:conf/icip/HsiehCCSC19} \lithead{DBLP:conf/icip/HsiehCCSC19}{
+		\lithead{DBLP:conf/icip/HsiehCCSC19}{
 			propose generation of consecutive arbitrary poses to provide more information for the user to make more informed decisions while purchasing clothes.
 		} And \lithead{DBLP:conf/iccv/DongLSWLZH019}{
 			introduce a three-stage approach that addressed challenges such as self-occlusions, misalignment among diverse poses, and diverse clothes texture. The misalignment between the input human pose and the target pose is alleviated by the use of deep Warp-GAN.
 		}
 
-		Published in \citeyear{DBLP:journals/access/ThaiMAW21}, \lithead[3D MP-VTON]{DBLP:journals/access/ThaiMAW21}{
+		\lithead[3D MP-VTON]{DBLP:journals/access/ThaiMAW21}{
 			allows for accurate texture mapping, which is crucial for natural clothing rendering from arbitrary views and it greatly reduces segmentation label imbalance which results in high-quality segmentation and reduced training time.
 		}
 
-		In \citeyear{DBLP:journals/tmm/HuLZR22} \lithead[SPG-VTON]{DBLP:journals/tmm/HuLZR22}{
+		\lithead[SPG-VTON]{DBLP:journals/tmm/HuLZR22}{
 			presents the use of three submodules - semantic prediction module (SPM), clothes warping module (CWM), and try-on synthesis module (TSM) working together to generate visual try-on images with preserved clothing details and desired poses.
 		}
 
-		And in \citeyear{du2023cf} \lithead[CF-VTON]{du2023cf}{
+		\lithead[CF-VTON]{du2023cf}{
 			addresses the challenges of preserving the person's identity and unnatural garment alignment. The proposed model includes predicting the "after-try-on" semantic map, warping the garment using an improved GAN and synthesizing a coarse result with a temporal segment network.
 		}
 
 	\subsection{\textbf{Video virtual try-on}}
 		Video virtual try-on systems fit target clothes onto a person in a video with spatio-temporal consistency. This is challenging because usual image-based try-on methods cause frame-to-frame inconsistencies when applied to video data.
 
-		In \citeyear{DBLP:conf/wacv/KuppaJLLM21} \lithead[ShineOn]{DBLP:conf/wacv/KuppaJLLM21}{
+		\lithead[ShineOn]{DBLP:conf/wacv/KuppaJLLM21}{
 			demonstrates ReLU and GeLU as the most effective activation functions, and provides clarity on quantifying the isolated visual effect of different design choices. It also specifies hyperparameter details for experimental reproduction. 
 		} And \lithead[MV-VTON]{DBLP:conf/mm/ZhongWTLW21}{
 			transfers desired clothes to frame images through pose alignment and region-wise pixel replacement. It embeds generated frames into the latent space as external memory for subsequent frame generation.
 		}
 
-		And in \citeyear{DBLP:conf/cvpr/JiangWYL22} \lithead[ClothFormer]{DBLP:conf/cvpr/JiangWYL22}{
+		\lithead[ClothFormer]{DBLP:conf/cvpr/JiangWYL22}{
 			generates realistic, harmonious, and spatio-temporally consistent try-on videos in complicated environments. It predicts dense flow mapping between body and clothing regions which addresses the challenge of generating accurate warping when occlusions appear in the clothing region.
 		}
 
 	\subsection{\textbf{3D virtual try-on}}
 		3D virtual try-on systems reconstruct 3D meshes of the person and clothing from the target images and then fit the clothing onto the person in attempts to generate a physically accurate 3D render.
 
-		Published in \citeyear{DBLP:conf/wacv/MajithiaPBGSS22}, \lithead[ULNeF]{DBLP:conf/wacv/MajithiaPBGSS22}{
+		\lithead[ULNeF]{DBLP:conf/wacv/MajithiaPBGSS22}{
 			allows for mix-and-match try-on, addressing the combinatorial complexity of mixing different garments. It works directly on neural implicit representations, which can bring a change of paradigm and open the door to radically different approaches in virtual try-on. However, it has only been validated with garments in T-pose and lacks other variations.
 		}
 
@@ -223,9 +221,9 @@
 	\subsection{\textbf{Augmented reality try-on}}
 		Augmented reality virtual try-on is the eventual goal of all try-on systems, integrating computer-generated imagery with real-world views, enabling users to virtually try on clothing and accessories in real-time.
 
-		The use of simple video dataset to successfully achieve transfer of clothing segmentation rather than using the DeepFashion dataset is proposed in \citeyear{DBLP:conf/ieeehpcs/JongM19} by \lithead{DBLP:conf/ieeehpcs/JongM19}{} But the use of short video datasets may limit dataset size and diversity.
+		The use of simple video dataset to successfully achieve transfer of clothing segmentation rather than using the DeepFashion dataset is proposed by \lithead{DBLP:conf/ieeehpcs/JongM19}{} But the use of short video datasets may limit dataset size and diversity.
 
-		In \citeyear{di2020comparative} \lithead{di2020comparative}{
+		\lithead{di2020comparative}{
 			proposes the use of four neural models: Fully Connected Neural Network, CNN, MobileNetV1 \cite{DBLP:journals/corr/HowardZCKWWAA17}, and MobileNetV2 \cite{DBLP:conf/cvpr/SandlerHZZC18}, to classify clothing images for computationally limited platforms on which augmented reality is often implemented.
 		}
 
@@ -241,7 +239,7 @@
 			Advanced Virtual Apparel Try using Augmented Reality (AVATAR) is capable of providing virtual apparel trial using AR. It provides a hardware solution using a multi-sensor body scanner for precise body coordinates. It also facilitates face color recognition, providing personalized apparel recommendations based on skin tone. But no insights about real-world implementation challenges are provided and no information regarding accuracy and reliability of sensors is discussed.
 		}
 
-		In \citeyear{ali2021augmented} \lithead{ali2021augmented}{
+		\lithead{ali2021augmented}{
 			explore the use of smartphone camera to provide 3d image of product using AR which provides real time AR by using a camera and YOLO for detection. But using YOLO introduces constraints on bounding box predictions, impacting small object detection and unusual configurations. Also, selective search in Faster R-CNN \cite{DBLP:journals/pami/RenHG017} can be time-consuming, affecting overall performance.
 		}
 
@@ -251,7 +249,7 @@
 			provide an insight about use of chatbots and AR technology in e-commerce. But the included study based upon small sample size of 68 millennials may limit generalizability.
 		}
 
-		In \citeyear{DBLP:journals/sensors/BattistoniGRSVB22} \lithead{DBLP:journals/sensors/BattistoniGRSVB22}{
+		\lithead{DBLP:journals/sensors/BattistoniGRSVB22}{
 			explore the role of AR as meta-user interface. It also covers a case study on focus group that validates design patterns, providing insights for improvements.
 		}
 
@@ -265,18 +263,22 @@
 		\begin{table}
 			\caption{Commercial virtual try-on}
 			\label{table:commercial-vton}
-			\begin{tabularx}{\columnwidth}{BMX}
+			\begin{tabularx}{\columnwidth}{
+				>{\raggedleft\arraybackslash}p{0.5cm} X p{4.25cm}
+			}
 				\toprule
-					\textbf{Technology} &
-					\textbf{References} &
+					\textbf{Tech.} &
+					\textbf{Item type} &
 					\textbf{Limitations} \\
 				\midrule
-					\commrow{WalmartA, WalmartB, GoogleShopping}{2d (+ Pose)}{
-						AI-generated variations of models wearing garments are not true representations of the user trying on the garment.
-					}
-					\commrow{Zalando, Snapchat, YTAR, BaumeMercier, LOreal, WarbyParker}{Augmented Reality}{
-						Most implementations only focus on accessories like eyewear, wrist watches, or shoes, or makeup instead of actual clothing items.
-					}
+					\textbf{2D} & Clothing \& Accessories \cite{WalmartA, WalmartB, GoogleShopping} & AI-generated variations of models wearing garments are not true representations of the user trying on the garment. \\
+				\midrule
+					\textbf{AR} & Clothing \& Accessories \cite{Snapchat} & \multirow{3}{4.25cm}{\justifying Most implementations only focus on accessories instead of actual clothing items.} \\
+					& Clothing \cite{Zalando} & \\
+					& Wrist Watches \cite{BaumeMercier} & \\
+					& Eyewear \cite{WarbyParker} & \\
+					& Makeup \cite{YTAR} & \\
+					& Makeup \cite{LOreal} & \\
 				\bottomrule
 			\end{tabularx}
 		\end{table}
