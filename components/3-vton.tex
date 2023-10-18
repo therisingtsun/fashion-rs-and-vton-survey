@@ -37,7 +37,7 @@
 		}
 
 		\lithead[OVNet]{DBLP:conf/cvpr/LiCZL21}{
-			presents a method to capture important details like buttons, shading, textures, and realistic hemlines, resulting in high-quality virtual try-on images. It introduces a technique for matching outfits with the most suitable model, leading to significant improvements in try-on results. It also consists of a semantic layout generator and an image generation pipeline using multiple coordinated warps, which yields consistent improvements in detail. But it does not handle variations in body shape, which limits its ability to dress garments directly on different body types. It also does not address the challenge of obtaining 3D measurements of garments and users.
+			presents a method to capture important details resulting in high-quality virtual try-on images. It also consists of a semantic layout generator and a pipeline which uses multiple coordinated warps for image generation, yielding consistent improvements in detail. But it does not handle variations in body shape, which limits its ability to dress garments directly on different body types. It also does not address the challenge of obtaining 3D measurements of garments and users.
 		}
 
 		Yet another hybrid approach is proposed in \lithead[CloTH-VTON+]{DBLP:journals/access/MinarTA21}{
@@ -45,13 +45,13 @@
 		}
 
 		\lithead[DCTON]{DBLP:conf/cvpr/GeSGY0021}{
-			can produce highly-realistic try-on images by disentangling important components of virtual try-on. It utilizes perceptual loss to ensure similar CNN feature representations between the warped clothes. It disentangles clothing, skin, and background components from input images. However, it does not differentiate clothing and non-clothing regions, which can hinder the quality of results.
+			produces realistic images for try-on by disentangling important components. It makes use of a perceptual loss function to ensure that CNN feature representations are similar between warped clothes. It disentangles clothing, skin, and background components from input images. However, it does not differentiate clothing and non-clothing regions, which can hinder the quality of results.
 		}
 
 		Successful synthesis of high-resolution virtual try-on is achieved by \lithead[VITON-HD]{DBLP:conf/cvpr/ChoiPLC21}{} It introduces a misalignment-aware normalization technique to address spatial deformation and generate properly aligned images and utilizes conditional normalization layers to preserve semantic information and apply spatially varying affine transformations.
 
 		Another student-teacher model, \lithead[PF-AFN]{DBLP:conf/cvpr/GeSZG0021}{
-			produces highly photo-realistic try-on images without relying on human parsing by the use of appearance flows between the person image and the garment image which enables accurate dense correspondences and high-quality results. It introduces an adjustable distillation loss function to ensure accurate representations and predictions. However, heavily relies on the use of a parser-based model as the `teacher' network, which may limit the image quality of the `student' network.
+			generates photo-realistic images but does not relying on human parsing. It does so by using appearance flows between person and garment images, which enables accurate dense correspondences and high-quality results. It introduces an adjustable distillation loss function to ensure accurate representations and predictions. However, heavily relies on the use of a parser-based model as the `teacher' network, which may limit the image quality of the `student' network.
 		}
 
 		\lithead[FashionMirror]{DBLP:conf/iccv/ChenLHSC21}{
@@ -69,7 +69,7 @@
 		}
 
 		A cheap and scalable weakly-supervised method is proposed by \lithead{DBLP:conf/cvpr/FengMSGLLOZZ22}{
-			which shows that projecting the rough alignment of clothing and body onto the StyleGAN space can yield photo-realistic wearing results. The Deep Generative Projection algorithm has a time cost for semantic and pattern searches and the method still faces difficulty against state-of-the-art methods in handling extremely complicated poses. Has an undesirably high FID score of 48.4.
+			which shows that projecting roughly aligned clothing and body onto the latent space of StyleGAN can yield photo-realistic results. The Deep Generative Projection algorithm has a time cost for semantic and pattern searches and the method still faces difficulty against state-of-the-art methods in handling extremely complicated poses. Has an undesirably high FID score of 48.4.
 		}
 
 		\lithead{DBLP:conf/cvpr/HeSX22}{
@@ -87,13 +87,13 @@
 		}
 
 		\lithead[C-VTON]{DBLP:conf/wacv/FeleLPS22}{
-			generates convincing results even with subjects in difficult poses, allowing for synthesis of high-quality try-on results. However, it has issues with the masking procedure when generating image context and loose clothing. Further, it lacks the ability to differentiate between the front and backside of the target garment.
+			generates convincing results with subjects even in difficult poses, allowing for synthesis of high-quality try-on results. However, the masking procedure has issues when generating images and loose clothing. Further, it lacks the ability to differentiate between the front and backside of the target garment.
 		} \lithead[3D-GCL]{DBLP:conf/nips/HuangLXKCL22}{
 			incorporates 3D parametric human models as priors to better handle variations of pose and viewpoint. It utilizes 3D-aware global correspondences that encode global semantic correlations.
 		}
 
 		\lithead[TryOnDiffusion]{DBLP:conf/cvpr/ZhuYZRCS0K23}{
-			generates apparel try-on results with significant body shape and pose modification by using a latent diffusion method \cite{DBLP:conf/cvpr/RombachBLEO22}. But it focuses on upper body clothing and does not experiment with full body try-on. Further, performance with more complex backgrounds is unknown.
+			generates results with significant pose and body shape modification by using a latent diffusion method \cite{DBLP:conf/cvpr/RombachBLEO22}. But it focuses on upper body clothing and does not experiment with full-body try-on. Further, performance with more complex backgrounds is unknown.
 		} \lithead[MGD]{DBLP:journals/corr/abs-2304-02051}{
 			also takes this diffusion model approach and incorporates multimodal inputs such as text, body pose, and sketches and achieves good results in terms of realism and coherence with multimodal inputs. It also introduces new semi-automatically annotated datasets.
 		}
@@ -211,7 +211,7 @@
 		3D virtual try-on systems reconstruct 3D meshes of the person and clothing from the target images and then fit the clothing onto the person in attempts to generate a physically accurate 3D render.
 
 		\lithead[ULNeF]{DBLP:conf/wacv/MajithiaPBGSS22}{
-			allows for mix-and-match try-on, addressing the combinatorial complexity of mixing different garments. It works directly on neural implicit representations, which can bring a change of paradigm and open the door to radically different approaches in virtual try-on. However, it has only been validated with garments in T-pose and lacks other variations.
+			allows for mix-and-match try-on, addressing the combinatorial complexity of mixing different garments. It works directly on implicit neural representations, which change the paradigm and pioneer new approaches in virtual try-on. However, it only explores garments in T-pose and lacks other variations.
 		}
 
 		The use of fixed topology parametric template mesh models by \lithead{DBLP:conf/nips/SantestebanOTC22}{
